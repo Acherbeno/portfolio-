@@ -39,8 +39,6 @@
         body.dark {
             background: var(--bg-dark);
             color: var(--text-dark);
-        }
-        body.dark {
             --folder-bg: #1e293b;
             --folder-hover: #334155;
         }
@@ -207,7 +205,7 @@
         body.dark .cv-button-container { border-top-color: var(--border-dark); }
         .button-group-about { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
-        /* ========== EXPLORATEUR DE FICHIERS ========== */
+        /* ========== EXPLORATEUR ========== */
         .file-explorer {
             background: var(--card-light);
             border-radius: 24px;
@@ -219,7 +217,6 @@
         }
         body.dark .file-explorer { background: var(--card-dark); border-color: var(--border-dark); }
 
-        /* Barre d'adresse */
         .explorer-addressbar {
             display: flex;
             align-items: center;
@@ -230,10 +227,7 @@
             flex-wrap: wrap;
         }
         body.dark .explorer-addressbar { border-bottom-color: var(--border-dark); }
-        .explorer-addressbar .nav-buttons {
-            display: flex;
-            gap: 0.5rem;
-        }
+        .explorer-addressbar .nav-buttons { display: flex; gap: 0.5rem; }
         .explorer-addressbar .nav-buttons button {
             background: none;
             border: none;
@@ -244,10 +238,11 @@
             border-radius: 6px;
             transition: 0.2s;
         }
-        .explorer-addressbar .nav-buttons button:hover {
+        .explorer-addressbar .nav-buttons button:hover:not(:disabled) {
             background: var(--primary);
             color: white;
         }
+        .explorer-addressbar .nav-buttons button:disabled { opacity: 0.3; cursor: not-allowed; }
         .explorer-addressbar .address-path {
             flex: 1;
             display: flex;
@@ -268,11 +263,7 @@
         }
         .explorer-addressbar .address-path i { color: var(--primary); }
         .explorer-addressbar .address-path span { color: var(--text-light); }
-
-        .explorer-addressbar .view-options {
-            display: flex;
-            gap: 0.3rem;
-        }
+        .explorer-addressbar .view-options { display: flex; gap: 0.3rem; }
         .explorer-addressbar .view-options button {
             background: none;
             border: none;
@@ -288,19 +279,16 @@
             color: white;
         }
 
-        /* Contenu de l'explorateur */
         .explorer-content {
             padding: 1.5rem;
             min-height: 400px;
         }
 
-        /* Vue dossiers (grille) */
         .folder-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             gap: 1.2rem;
         }
-
         .folder-item {
             display: flex;
             flex-direction: column;
@@ -320,64 +308,123 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.06);
         }
-        .folder-item .folder-icon {
-            font-size: 3.2rem;
-            color: #f59e0b;
-            margin-bottom: 0.5rem;
-            transition: 0.2s;
-        }
+        .folder-item .folder-icon { font-size: 3.2rem; margin-bottom: 0.5rem; transition: 0.2s; }
+        .folder-item .folder-icon.folder-yellow { color: #f59e0b; }
+        .folder-item .folder-icon.folder-blue { color: #3b82f6; }
+        .folder-item .folder-icon.folder-green { color: #10b981; }
+        .folder-item .folder-icon.folder-red { color: #ef4444; }
+        .folder-item .folder-icon.folder-purple { color: #8b5cf6; }
         .folder-item:hover .folder-icon { transform: scale(1.05); }
-        .folder-item .folder-name {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-light);
-        }
-        .folder-item .folder-info {
-            font-size: 0.75rem;
-            color: var(--secondary);
-            margin-top: 0.2rem;
-        }
+        .folder-item .folder-name { font-weight: 600; font-size: 0.95rem; color: var(--text-light); }
+        .folder-item .folder-info { font-size: 0.75rem; color: var(--secondary); margin-top: 0.2rem; }
 
-        /* Vue fichiers (détails) */
-        .file-list {
+        /* Vue projet */
+        .project-detail { padding: 0.5rem 0; }
+        .project-detail .project-header {
             display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
         }
-        .file-item {
+        body.dark .project-detail .project-header { border-bottom-color: var(--border-dark); }
+        .project-detail .project-header h2 { font-size: 1.8rem; font-weight: 700; }
+        .project-detail .project-header .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .project-detail .project-header .project-tags span {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .project-detail .project-desc {
+            color: var(--secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .project-detail .project-section { margin: 1.8rem 0; }
+        .project-detail .project-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
+            gap: 0.5rem;
+        }
+        .project-detail .project-section h3 i { color: var(--primary); }
+        .project-detail .project-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
-            padding: 0.6rem 1rem;
-            border-radius: 10px;
-            cursor: pointer;
+            margin: 0.5rem 0;
+        }
+        .project-detail .project-images img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             transition: 0.2s;
-            border: 1px solid transparent;
+            cursor: pointer;
         }
-        .file-item:hover {
-            background: var(--folder-hover);
-            border-color: var(--border-light);
+        .project-detail .project-images img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
-        .file-item .file-icon {
-            font-size: 1.8rem;
-            width: 40px;
-            text-align: center;
+        .project-detail .project-files {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
         }
-        .file-item .file-name {
-            flex: 1;
-            font-weight: 500;
-        }
-        .file-item .file-size {
-            font-size: 0.8rem;
-            color: var(--secondary);
-        }
-        .file-item .file-type {
-            font-size: 0.75rem;
+        .project-detail .project-files a {
             background: var(--folder-bg);
-            padding: 0.15rem 0.8rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 30px;
-            color: var(--secondary);
+            border: 1px solid var(--border-light);
+            text-decoration: none;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: 0.2s;
+            font-size: 0.9rem;
         }
+        body.dark .project-detail .project-files a { background: var(--folder-bg); border-color: var(--border-dark); }
+        .project-detail .project-files a:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .project-detail .project-files a i { font-size: 1.2rem; }
+
+        .project-detail .project-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-light);
+        }
+        body.dark .project-detail .project-nav { border-top-color: var(--border-dark); }
+        .project-detail .project-nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+        }
+        .project-detail .project-nav a:hover { text-decoration: underline; }
+        .project-detail .project-nav .disabled {
+            color: var(--secondary);
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        .project-detail .project-nav .disabled:hover { text-decoration: none; }
 
         /* Breadcrumb */
         .breadcrumb {
@@ -403,15 +450,39 @@
         .breadcrumb .crumb.active { color: var(--text-light); font-weight: 600; }
         .breadcrumb .separator { color: var(--secondary); font-size: 0.7rem; }
 
+        /* File list */
+        .file-list { display: flex; flex-direction: column; gap: 0.3rem; }
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.6rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid transparent;
+        }
+        .file-item:hover {
+            background: var(--folder-hover);
+            border-color: var(--border-light);
+        }
+        .file-item .file-icon { font-size: 1.8rem; width: 40px; text-align: center; }
+        .file-item .file-name { flex: 1; font-weight: 500; }
+        .file-item .file-size { font-size: 0.8rem; color: var(--secondary); }
+        .file-item .file-type {
+            font-size: 0.75rem;
+            background: var(--folder-bg);
+            padding: 0.15rem 0.8rem;
+            border-radius: 30px;
+            color: var(--secondary);
+        }
+
         .empty-folder {
             text-align: center;
             padding: 3rem 1rem;
             color: var(--secondary);
         }
         .empty-folder i { font-size: 4rem; margin-bottom: 1rem; opacity: 0.3; }
-        .empty-folder p { font-size: 1.1rem; }
-
-        /* ========== FIN EXPLORATEUR ========== */
 
         /* Contact */
         .contact-section {
@@ -541,7 +612,6 @@
         .pdf-error.show { display: flex; }
         .pdf-error i { font-size: 4rem; color: #ef4444; margin-bottom: 1rem; }
 
-        /* Responsive */
         @media (max-width: 800px) {
             .nav-links {
                 position: fixed;
@@ -569,6 +639,8 @@
             .folder-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
             .explorer-addressbar { flex-wrap: wrap; }
             .explorer-addressbar .address-path { min-width: 100px; font-size: 0.75rem; }
+            .project-detail .project-header h2 { font-size: 1.4rem; }
+            .project-detail .project-images { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -582,7 +654,7 @@
         <div class="pdf-error" id="pdfError">
             <i class="fas fa-file-pdf"></i>
             <h3>Document non disponible</h3>
-            <p>Le fichier PDF n'a pas encore été ajouté.</p>
+            <p>Le fichier PDF n'a pas encore été ajouté. Vérifie que le fichier existe bien dans le dossier /image/</p>
         </div>
     </div>
 </div>
@@ -597,7 +669,7 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="#accueil">Accueil</a></li>
             <li><a href="#a-propos">À propos</a></li>
-            <li><a href="#competences">Compétences</a></li>
+            <li><a href="#competences">Preuves</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </div>
@@ -637,7 +709,6 @@
         <h2 class="section-title fade-up"><i class="fas fa-user-astronaut"></i> À propos</h2>
         <div class="about-content fade-up">
             <div class="about-text">
-                <p style="font-size: 1.2rem;">
                     Étudiant en <strong>BTS SIO SISR</strong>, je transforme mes connaissances en solutions concrètes dans les domaines des réseaux, des systèmes et de la cybersécurité.
                 </p>
                 <br>
@@ -645,24 +716,25 @@
             </div>
             <div class="cv-button-container">
                 <div class="button-group-about">
-                    <a href="#" class="btn btn-cv" onclick="openPDF('/image/cv%20bien.pdf'); return false;">
-                        <i class="fas fa-file-alt"></i> Voir mon CV complet
+                    <a href="#" class="btn btn-cv" onclick="openPDF('/image/cv bien.pdf'); return false;">
                     </a>
-                    <a href="#" class="btn btn-rapport" onclick="openPDF('/image/1Rapport_de_stage_Word_Final (1).pdf'); return false;">
+                    <a href="#" class="btn btn-rapport" onclick="openPDF('/image/rapport.pdf'); return false;">
                         <i class="fas fa-file-pdf"></i> 📄 Lire mon rapport de stage
                     </a>
                 </div>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--secondary);">
+                    <i class="fas fa-eye"></i> Les documents s'ouvrent dans un aperçu intégré
+                </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Compétences avec EXPLORATEUR DE FICHIERS -->
+<!-- Compétences avec EXPLORATEUR -->
 <section id="competences">
     <div class="container">
         <h2 class="section-title fade-up"><i class="fas fa-folder-tree"></i> Mes preuves</h2>
 
-        <!-- EXPLORATEUR DE FICHIERS -->
         <div class="file-explorer fade-up" id="fileExplorer">
             <!-- Barre d'adresse -->
             <div class="explorer-addressbar">
@@ -735,16 +807,28 @@
         const modal = document.getElementById('pdfModal');
         const frame = document.getElementById('pdfFrame');
         const error = document.getElementById('pdfError');
+        
         error.classList.remove('show');
         frame.style.display = 'block';
         frame.src = url;
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
+        
         frame.onerror = function() {
             frame.style.display = 'none';
             error.classList.add('show');
         };
+        
+        setTimeout(function() {
+            try {
+                if (frame.contentDocument && frame.contentDocument.body.innerHTML === '') {
+                    frame.style.display = 'none';
+                    error.classList.add('show');
+                }
+            } catch(e) {}
+        }, 3000);
     }
+
     function closePDF() {
         const modal = document.getElementById('pdfModal');
         const frame = document.getElementById('pdfFrame');
@@ -755,6 +839,7 @@
         frame.style.display = 'block';
         setTimeout(() => { frame.src = ''; }, 300);
     }
+
     document.getElementById('pdfModalClose').addEventListener('click', closePDF);
     document.getElementById('pdfModal').addEventListener('click', function(e) {
         if (e.target === this) closePDF();
@@ -763,66 +848,143 @@
         if (e.key === 'Escape') closePDF();
     });
 
-    // ========== EXPLORATEUR DE FICHIERS ==========
+    // ========== EXPLORATEUR ==========
     const viewMode = { current: 'grid' };
 
-    // Structure des dossiers et fichiers
     const fileSystem = {
         name: 'Racine',
         type: 'folder',
         children: [
             {
-                name: 'Réseaux',
+                name: '🌐 Réseaux',
                 type: 'folder',
                 icon: 'fa-folder',
-                children: [
-                    { name: 'Topologie VLAN', type: 'file', ext: 'png', icon: 'fa-file-image', url: '/image/topologie-vlan.png' },
-                    { name: 'Configuration VLAN', type: 'file', ext: 'pdf', icon: 'fa-file-pdf', url: '/image/config-vlan.pdf' },
-                    { name: 'Routage inter-VLAN', type: 'file', ext: 'png', icon: 'fa-file-image', url: '/image/routage-vlan.png' },
-                    { name: 'Explication Packet Tracer', type: 'file', ext: 'pdf', icon: 'fa-file-pdf', url: '/image/packet-tracer-guide.pdf' }
+                projects: [
+                    {
+                        title: 'Routage inter-VLAN HSRP',
+                        description: 'Mise en place d\'un routage inter-VLAN avec HSRP (Hot Standby Router Protocol) pour assurer la redondance et la haute disponibilité du réseau.',
+                        tags: ['HSRP', 'VLAN', 'Routage', 'Cisco'],
+                        images: ['/image/topologie-vlan.png', '/image/routage-vlan.png'],
+                        files: [
+                            { name: 'Configuration HSRP', url: '/image/hsrp-config.pdf', icon: 'fa-file-pdf' },
+                            { name: 'Topologie complète', url: '/image/topologie-vlan.png', icon: 'fa-file-image' }
+                        ]
+                    },
+                    {
+                        title: 'Segmentation VLAN et ACL',
+                        description: 'Conception d\'une architecture VLAN sécurisée avec des ACL (Access Control Lists) pour contrôler les flux entre les différents services.',
+                        tags: ['VLAN', 'ACL', 'Sécurité', 'Cisco'],
+                        images: ['/image/vlan-topologie.png', '/image/acl-config.png'],
+                        files: [
+                            { name: 'Configuration VLAN', url: '/image/vlan-config.pdf', icon: 'fa-file-pdf' },
+                            { name: 'Règles ACL', url: '/image/acl-rules.pdf', icon: 'fa-file-pdf' }
+                        ]
+                    },
+                    {
+                        title: 'NAT et PAT - Accès Internet',
+                        description: 'Configuration NAT (Network Address Translation) et PAT (Port Address Translation) pour permettre l\'accès à Internet depuis un réseau privé.',
+                        tags: ['NAT', 'PAT', 'Cisco', 'Réseau'],
+                        images: ['/image/nat-config.png', '/image/pat-config.png'],
+                        files: [
+                            { name: 'Configuration NAT', url: '/image/nat-config.pdf', icon: 'fa-file-pdf' },
+                            { name: 'Fichier Packet Tracer', url: '/image/nat.pkt', icon: 'fa-file-archive' }
+                        ]
+                    }
                 ]
             },
             {
-                name: 'Systèmes',
+                name: '🖥️ Systèmes',
                 type: 'folder',
                 icon: 'fa-folder',
-                children: [
-                    { name: 'Installation Windows Server', type: 'file', ext: 'png', icon: 'fa-file-image', url: '/image/win-server-install.png' },
-                    { name: 'Configuration AD DS', type: 'file', ext: 'pdf', icon: 'fa-file-pdf', url: '/image/ad-ds-config.pdf' },
-                    { name: 'Linux - Configuration Debian', type: 'file', ext: 'pdf', icon: 'fa-file-pdf', url: '/image/debian-config.pdf' }
+                projects: [
+                    {
+                        title: 'Infrastructure Windows Server',
+                        description: 'Déploiement complet d\'un domaine Active Directory avec services DHCP, DNS et GPO pour une gestion centralisée des utilisateurs.',
+                        tags: ['Windows Server', 'AD DS', 'DHCP', 'DNS'],
+                        images: ['/image/win-server-install.png', '/image/ad-ds-config.png'],
+                        files: [
+                            { name: 'Guide d\'installation', url: '/image/win-server-guide.pdf', icon: 'fa-file-pdf' },
+                            { name: 'Configuration AD DS', url: '/image/ad-ds-config.pdf', icon: 'fa-file-pdf' }
+                        ]
+                    },
+                    {
+                        title: 'Administration Linux Debian',
+                        description: 'Configuration d\'un serveur Debian avec services web (Apache/Nginx), base de données (MySQL) et gestion des utilisateurs.',
+                        tags: ['Linux', 'Debian', 'Apache', 'MySQL'],
+                        images: ['/image/debian-server.png'],
+                        files: [
+                            { name: 'Configuration Debian', url: '/image/debian-config.pdf', icon: 'fa-file-pdf' }
+                        ]
+                    }
                 ]
             },
             {
-                name: 'Cybersécurité',
+                name: '🔐 Cybersécurité',
                 type: 'folder',
                 icon: 'fa-folder',
-                children: [
-                    { name: 'Règles Firewall', type: 'file', ext: 'pdf', icon: 'fa-file-pdf', url: '/image/firewall-rules.pdf' },
-                    { name: 'Audit de sécurité', type: 'file', ext: 'pdf', icon: 'fa-file-pdf', url: '/image/security-audit.pdf' },
-                    { name: 'Hardening Linux', type: 'file', ext: 'txt', icon: 'fa-file-alt', url: '/image/hardening-linux.txt' }
+                projects: [
+                    {
+                        title: 'Sécurisation Pare-feu',
+                        description: 'Mise en place de règles de pare-feu pour protéger le réseau contre les attaques extérieures et contrôler les flux entrants/sortants.',
+                        tags: ['Firewall', 'Iptables', 'Sécurité'],
+                        images: ['/image/firewall-rules.png'],
+                        files: [
+                            { name: 'Règles Firewall', url: '/image/firewall-rules.pdf', icon: 'fa-file-pdf' }
+                        ]
+                    },
+                    {
+                        title: 'Audit de sécurité',
+                        description: 'Réalisation d\'un audit complet pour identifier les vulnérabilités et proposer des solutions de renforcement.',
+                        tags: ['Audit', 'Vulnérabilité', 'Hardening'],
+                        images: ['/image/security-audit.png'],
+                        files: [
+                            { name: 'Rapport d\'audit', url: '/image/security-audit.pdf', icon: 'fa-file-pdf' }
+                        ]
+                    },
+                    {
+                        title: 'Hardening Linux',
+                        description: 'Durcissement d\'un serveur Linux : configuration sécurisée, suppression des services inutiles, gestion des accès.',
+                        tags: ['Linux', 'Hardening', 'Sécurité'],
+                        images: ['/image/hardening-linux.png'],
+                        files: [
+                            { name: 'Script de durcissement', url: '/image/hardening-linux.txt', icon: 'fa-file-alt' }
+                        ]
+                    }
                 ]
             },
             {
-                name: 'Support IT',
+                name: '🛠️ Support IT',
                 type: 'folder',
                 icon: 'fa-folder',
-                children: [
-                    { name: 'Déploiement Windows 11', type: 'file', ext: 'pdf', icon: 'fa-file-pdf', url: '/image/windows11.pdf' },
-                    { name: 'Diagnostic matériel', type: 'file', ext: 'png', icon: 'fa-file-image', url: '/image/diagnostic.png' },
-                    { name: 'Script de maintenance', type: 'file', ext: 'ps1', icon: 'fa-file-code', url: '/image/maintenance.ps1' }
+                projects: [
+                    {
+                        title: 'Déploiement Windows 11',
+                        description: 'Déploiement automatisé de postes Windows 11 avec configuration des mises à jour, sécurisation et optimisation.',
+                        tags: ['Windows 11', 'Déploiement', 'MDT'],
+                        images: ['/image/win11-deploy.png'],
+                        files: [
+                            { name: 'Guide de déploiement', url: '/image/windows11.docx', icon: 'fa-file-word' }
+                        ]
+                    },
+                    {
+                        title: 'Maintenance et Diagnostic',
+                        description: 'Procédures de maintenance préventive et curative, diagnostic matériel et logiciel, résolution de problèmes.',
+                        tags: ['Maintenance', 'Diagnostic', 'Support'],
+                        images: ['/image/diagnostic.png'],
+                        files: [
+                            { name: 'Script de maintenance', url: '/image/maintenance.ps1', icon: 'fa-file-code' }
+                        ]
+                    }
                 ]
             }
         ]
     };
 
-    // Historique de navigation
     let history = [];
     let currentIndex = -1;
     let currentFolder = fileSystem;
 
-    // Fonction pour ouvrir un dossier
     function openFolder(folder) {
-        // Ajouter à l'historique
         if (history.length > currentIndex + 1) {
             history = history.slice(0, currentIndex + 1);
         }
@@ -834,24 +996,83 @@
         updateBreadcrumb();
     }
 
-    // Fonction pour naviguer vers un dossier via l'historique
-    function goToHistory(index) {
-        if (index < 0 || index >= history.length) return;
-        currentIndex = index;
-        currentFolder = history[index];
-        renderExplorer();
-        updateBackButton();
-        updateBreadcrumb();
+    function openProject(project) {
+        const projectView = document.createElement('div');
+        projectView.className = 'project-detail';
+        
+        let imagesHtml = '';
+        if (project.images && project.images.length > 0) {
+            imagesHtml = `
+                <div class="project-section">
+                    <h3><i class="fas fa-images"></i> Captures d'écran</h3>
+                    <div class="project-images">
+                        ${project.images.map(img => `<img src="${img}" alt="Capture" onclick="window.open('${img}', '_blank')">`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        let filesHtml = '';
+        if (project.files && project.files.length > 0) {
+            filesHtml = `
+                <div class="project-section">
+                    <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                    <div class="project-files">
+                        ${project.files.map(f => `
+                            <a href="#" onclick="openFile('${f.url}', '${f.name}'); return false;">
+                                <i class="fas ${f.icon || 'fa-file'}"></i> ${f.name}
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        projectView.innerHTML = `
+            <div class="project-header">
+                <h2>📄 ${project.title}</h2>
+                <div class="project-tags">
+                    ${project.tags.map(t => `<span>${t}</span>`).join('')}
+                </div>
+            </div>
+            <div class="project-desc">${project.description}</div>
+            ${imagesHtml}
+            ${filesHtml}
+            <div class="project-nav">
+                <span class="disabled"><i class="fas fa-chevron-left"></i> Projet précédent</span>
+                <span class="disabled">Projet suivant <i class="fas fa-chevron-right"></i></span>
+            </div>
+        `;
+
+        const container = document.getElementById('explorerContent');
+        container.innerHTML = '';
+        container.appendChild(projectView);
+        
+        // Mise à jour du breadcrumb
+        const breadcrumb = document.getElementById('breadcrumb');
+        const crumbs = breadcrumb.querySelectorAll('.crumb');
+        if (crumbs.length > 0) {
+            const lastCrumb = crumbs[crumbs.length - 1];
+            const newCrumb = document.createElement('span');
+            newCrumb.className = 'crumb active';
+            newCrumb.innerHTML = `📄 ${project.title}`;
+            breadcrumb.appendChild(newCrumb);
+        }
+
+        // Mise à jour du chemin
+        document.getElementById('currentPath').textContent = `📄 ${project.title}`;
     }
 
-    // Fonction retour
     function goBack() {
         if (currentIndex > 0) {
-            goToHistory(currentIndex - 1);
+            currentIndex--;
+            currentFolder = history[currentIndex];
+            renderExplorer();
+            updateBackButton();
+            updateBreadcrumb();
         }
     }
 
-    // Fonction accueil
     function goHome() {
         history = [];
         currentIndex = -1;
@@ -861,16 +1082,13 @@
         updateBreadcrumb();
     }
 
-    // Mise à jour du bouton retour
     function updateBackButton() {
         document.getElementById('backBtn').disabled = (currentIndex <= 0);
     }
 
-    // Mise à jour du breadcrumb
     function updateBreadcrumb() {
         const breadcrumb = document.getElementById('breadcrumb');
         breadcrumb.innerHTML = '';
-        // On affiche le chemin
         history.forEach((folder, index) => {
             if (index > 0) {
                 const sep = document.createElement('span');
@@ -881,25 +1099,37 @@
             const crumb = document.createElement('span');
             crumb.className = 'crumb';
             if (index === currentIndex) crumb.classList.add('active');
-            crumb.innerHTML = `<i class="fas ${folder.icon || 'fa-folder'}"></i> ${folder.name}`;
-            crumb.onclick = () => goToHistory(index);
+            crumb.innerHTML = `<i class="fas fa-folder"></i> ${folder.name}`;
+            crumb.onclick = () => {
+                currentIndex = index;
+                currentFolder = history[index];
+                renderExplorer();
+                updateBackButton();
+                updateBreadcrumb();
+            };
             breadcrumb.appendChild(crumb);
         });
-        // Mise à jour du chemin dans la barre d'adresse
+        
         const pathEl = document.getElementById('currentPath');
         if (currentFolder === fileSystem) {
             pathEl.textContent = '📁 Racine';
-        } else {
+        } else if (currentFolder.name) {
             pathEl.textContent = `📁 ${currentFolder.name}`;
         }
     }
 
-    // Rendu de l'explorateur
     function renderExplorer() {
         const container = document.getElementById('explorerContent');
         const children = currentFolder.children || [];
+        const projects = currentFolder.projects || [];
 
-        if (children.length === 0) {
+        // Si on est dans un dossier qui a des projets (pas des sous-dossiers)
+        if (projects && projects.length > 0 && (!children || children.length === 0)) {
+            renderProjects(container, projects);
+            return;
+        }
+
+        if (children.length === 0 && projects.length === 0) {
             container.innerHTML = `
                 <div class="empty-folder">
                     <i class="fas fa-folder-open"></i>
@@ -910,79 +1140,78 @@
         }
 
         if (viewMode.current === 'grid') {
-            renderGrid(container, children);
+            renderGrid(container, children, projects);
         } else {
-            renderList(container, children);
+            renderList(container, children, projects);
         }
     }
 
-    // Vue grille
-    function renderGrid(container, items) {
+    function renderProjects(container, projects) {
         let html = '<div class="folder-grid">';
-        items.forEach(item => {
-            if (item.type === 'folder') {
-                html += `
-                    <div class="folder-item" onclick="openFolderFromItem('${item.name}')">
-                        <div class="folder-icon"><i class="fas fa-folder"></i></div>
-                        <div class="folder-name">${item.name}</div>
-                        <div class="folder-info">${item.children ? item.children.length : 0} éléments</div>
-                    </div>
-                `;
-            } else {
-                const icon = item.icon || 'fa-file';
-                html += `
-                    <div class="folder-item" onclick="openFile('${item.url || '#'}', '${item.name}')">
-                        <div class="folder-icon" style="color: ${getFileColor(item.ext)}"><i class="fas ${icon}"></i></div>
-                        <div class="folder-name">${item.name}</div>
-                        <div class="folder-info">${item.ext || 'fichier'}</div>
-                    </div>
-                `;
-            }
+        projects.forEach(project => {
+            html += `
+                <div class="folder-item" onclick="openProjectFromName('${project.title}')">
+                    <div class="folder-icon" style="color: #3b82f6; font-size: 2.5rem;">📄</div>
+                    <div class="folder-name">${project.title}</div>
+                    <div class="folder-info">${project.tags.slice(0, 3).join(' • ')}</div>
+                </div>
+            `;
         });
         html += '</div>';
         container.innerHTML = html;
     }
 
-    // Vue liste
-    function renderList(container, items) {
+    function openProjectFromName(title) {
+        const projects = currentFolder.projects || [];
+        const found = projects.find(p => p.title === title);
+        if (found) {
+            openProject(found);
+        }
+    }
+
+    function renderGrid(container, children, projects) {
+        let html = '<div class="folder-grid">';
+        children.forEach(item => {
+            const iconClass = item.name.includes('Réseaux') ? 'folder-yellow' :
+                            item.name.includes('Systèmes') ? 'folder-blue' :
+                            item.name.includes('Cybersécurité') ? 'folder-green' :
+                            item.name.includes('Support') ? 'folder-red' : 'folder-yellow';
+            html += `
+                <div class="folder-item" onclick="openFolderFromName('${item.name}')">
+                    <div class="folder-icon ${iconClass}"><i class="fas fa-folder"></i></div>
+                    <div class="folder-name">${item.name}</div>
+                    <div class="folder-info">${item.projects ? item.projects.length : 0} projet(s)</div>
+                </div>
+            `;
+        });
+        html += '</div>';
+        container.innerHTML = html;
+    }
+
+    function renderList(container, children, projects) {
         let html = '<div class="file-list">';
-        items.forEach(item => {
-            if (item.type === 'folder') {
-                html += `
-                    <div class="file-item" onclick="openFolderFromItem('${item.name}')">
-                        <div class="file-icon" style="color: #f59e0b;"><i class="fas fa-folder"></i></div>
-                        <div class="file-name">${item.name}</div>
-                        <div class="file-type">Dossier</div>
-                        <div class="file-size">${item.children ? item.children.length : 0} éléments</div>
-                    </div>
-                `;
-            } else {
-                const icon = item.icon || 'fa-file';
-                const color = getFileColor(item.ext);
-                html += `
-                    <div class="file-item" onclick="openFile('${item.url || '#'}', '${item.name}')">
-                        <div class="file-icon" style="color: ${color};"><i class="fas ${icon}"></i></div>
-                        <div class="file-name">${item.name}</div>
-                        <div class="file-type">${item.ext || 'fichier'}</div>
-                        <div class="file-size">-</div>
-                    </div>
-                `;
-            }
+        children.forEach(item => {
+            html += `
+                <div class="file-item" onclick="openFolderFromName('${item.name}')">
+                    <div class="file-icon" style="color: #f59e0b;"><i class="fas fa-folder"></i></div>
+                    <div class="file-name">${item.name}</div>
+                    <div class="file-type">Dossier</div>
+                    <div class="file-size">${item.projects ? item.projects.length : 0} projet(s)</div>
+                </div>
+            `;
         });
         html += '</div>';
         container.innerHTML = html;
     }
 
-    // Ouvrir un dossier depuis la vue
-    function openFolderFromItem(name) {
+    function openFolderFromName(name) {
         const children = currentFolder.children || [];
-        const found = children.find(c => c.type === 'folder' && c.name === name);
+        const found = children.find(c => c.name === name);
         if (found) {
             openFolder(found);
         }
     }
 
-    // Ouvrir un fichier
     function openFile(url, name) {
         if (!url || url === '#') {
             alert('Fichier non disponible');
@@ -990,37 +1219,14 @@
         }
         const ext = url.split('.').pop().toLowerCase();
         if (['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp'].includes(ext)) {
-            // Ouvrir l'image dans un nouvel onglet
             window.open(url, '_blank');
         } else if (ext === 'pdf') {
             openPDF(url);
         } else {
-            // Pour les autres fichiers (txt, ps1, etc.)
             window.open(url, '_blank');
         }
     }
 
-    // Couleur selon l'extension
-    function getFileColor(ext) {
-        const colors = {
-            pdf: '#ef4444',
-            png: '#3b82f6',
-            jpg: '#f59e0b',
-            jpeg: '#f59e0b',
-            gif: '#8b5cf6',
-            svg: '#10b981',
-            txt: '#6b7280',
-            ps1: '#2563eb',
-            sh: '#10b981',
-            py: '#f59e0b',
-            html: '#ef4444',
-            css: '#3b82f6',
-            js: '#f59e0b'
-        };
-        return colors[ext] || '#6b7280';
-    }
-
-    // Changer de vue
     function setView(view) {
         viewMode.current = view;
         document.getElementById('viewGrid').classList.toggle('active', view === 'grid');
@@ -1099,11 +1305,9 @@
     }
 
     // ========== INIT ==========
-    // Initialisation de l'explorateur
     goHome();
     observeFadeElements();
 
-    // Réobserver après les changements de vue
     window.addEventListener('load', () => {
         observeFadeElements();
     });
