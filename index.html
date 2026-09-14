@@ -520,6 +520,23 @@
             border-color: var(--primary);
         }
 
+        /* VIGNETTE IMAGE DANS LES CARTES PROJET */
+        .folder-item.project-item .project-thumbnail {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            margin-bottom: 0.8rem;
+            border-radius: 12px;
+            background: white;
+            padding: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+        .folder-item.project-item:hover .project-thumbnail {
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
         .folder-item .folder-icon { font-size: 3.2rem; margin-bottom: 0.5rem; transition: 0.3s; }
         .folder-item:hover .folder-icon { transform: scale(1.1) rotate(-3deg); }
 
@@ -542,6 +559,7 @@
         .folder-item .folder-icon.folder-red { color: #ef4444; }
         .folder-item .folder-icon.folder-purple { color: #8b5cf6; }
         .folder-item .folder-icon.folder-orange { color: #f97316; }
+        .folder-item .folder-icon.folder-cyan { color: #06b6d4; }
         .folder-item .folder-name { font-weight: 600; font-size: 0.95rem; color: var(--text-light); }
         .folder-item .folder-info { font-size: 0.75rem; color: var(--secondary); margin-top: 0.2rem; }
 
@@ -630,24 +648,37 @@
             gap: 0.5rem;
         }
         .project-detail .project-section h3 i { color: var(--primary); }
+
+        /* IMAGE EN GRAND DANS LE PROJET */
         .project-detail .project-images {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             gap: 1rem;
-            margin: 0.5rem 0;
+            margin: 1rem 0;
         }
         .project-detail .project-images img {
             width: 100%;
-            border-radius: 12px;
-            border: 1px solid var(--border-light);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            max-width: 550px;
+            border-radius: 16px;
+            border: 2px solid var(--border-light);
+            box-shadow: 0 15px 35px -10px rgba(0,0,0,0.2);
             transition: 0.3s;
-            cursor: pointer;
+            cursor: zoom-in;
+            display: block;
+            background: white;
+            padding: 10px;
+        }
+        body.dark .project-detail .project-images img {
+            border-color: var(--border-dark);
+            background: #f1f5f9;
         }
         .project-detail .project-images img:hover {
-            transform: scale(1.03) rotate(1deg);
-            box-shadow: 0 12px 30px -8px rgba(0,0,0,0.15);
+            transform: scale(1.02);
+            box-shadow: 0 20px 45px -10px rgba(0,0,0,0.3);
+            border-color: var(--primary);
         }
+
         .project-detail .project-files {
             display: flex;
             flex-wrap: wrap;
@@ -675,33 +706,38 @@
         }
         .project-detail .project-files a i { font-size: 1.2rem; }
 
+        /* BOUTON RETOUR */
         .project-detail .project-nav {
             display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2.5rem;
             padding-top: 1.5rem;
             border-top: 1px solid var(--border-light);
         }
         body.dark .project-detail .project-nav { border-top-color: var(--border-dark); }
-        .project-detail .project-nav a {
-            text-decoration: none;
-            color: var(--primary);
+        
+        .btn-back {
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
             font-weight: 600;
-            display: flex;
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
             transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 8px 18px var(--primary-glow);
         }
-        .project-detail .project-nav a:hover {
-            transform: translateX(5px);
-            text-decoration: underline;
+        .btn-back:hover {
+            background: var(--primary-dark);
+            transform: translateX(-5px);
+            box-shadow: 0 12px 25px var(--primary-glow);
         }
-        .project-detail .project-nav .disabled {
-            color: var(--secondary);
-            cursor: not-allowed;
-            opacity: 0.5;
-        }
-        .project-detail .project-nav .disabled:hover { text-decoration: none; transform: none; }
 
         .breadcrumb {
             display: flex;
@@ -1040,7 +1076,7 @@
             .explorer-addressbar { flex-wrap: wrap; }
             .explorer-addressbar .address-path { min-width: 100px; font-size: 0.75rem; }
             .project-detail .project-header h2 { font-size: 1.4rem; }
-            .project-detail .project-images { grid-template-columns: 1fr; }
+            .project-detail .project-images img { max-width: 100%; }
         }
     </style>
 </head>
@@ -1110,6 +1146,7 @@
                 <p>│   📁 Cybersécurité</p>
                 <p>│   📁 Support IT</p>
                 <p>│   📁 Stage</p>
+                <p>│   📁 Certifications</p>
                 <p>└───$</p>
             </div>
         </div>
@@ -1669,6 +1706,25 @@
                         ]
                     }
                 ]
+            },
+            // ===== NOUVEAU DOSSIER CERTIFICATIONS =====
+            {
+                name: '📁 Certifications',
+                type: 'folder',
+                icon: 'fa-folder',
+                children: [],
+                projects: [
+                    {
+                        title: 'Certification L\'ATELIER RGPD',
+                        description: 'Obtention de la certification L\'ATELIER RGPD. Cette formation m\'a permis d\'acquérir les compétences nécessaires pour comprendre et appliquer le Règlement Général sur la Protection des Données (RGPD) au sein d\'une organisation. J\'ai appris à identifier les données personnelles, à mettre en place des mesures de sécurité adéquates, à gérer les consentements et à assurer la conformité des traitements de données.',
+                        tags: ['RGPD', 'Cybersécurité', 'Données Personnelles', 'Conformité'],
+                        thumbnail: '/image/certif.png',
+                        images: ['/image/certif.png'], 
+                        files: [
+                            { name: 'Certificat L\'ATELIER RGPD', url: '/image/certification-rgpd.pdf', icon: 'fa-file-pdf' }
+                        ]
+                    }
+                ]
             }
         ]
     };
@@ -1696,7 +1752,7 @@
         if (project.images && project.images.length > 0) {
             imagesHtml = `
                 <div class="project-section">
-                    <h3><i class="fas fa-images"></i> Captures d'écran</h3>
+                    <h3><i class="fas fa-image"></i> Preuve / Certificat</h3>
                     <div class="project-images">
                         ${project.images.map(img => `<img src="${img}" alt="Capture" onclick="window.open('${img}', '_blank')">`).join('')}
                     </div>
@@ -1729,8 +1785,9 @@
             ${imagesHtml}
             ${filesHtml}
             <div class="project-nav">
-                <span class="disabled"><i class="fas fa-chevron-left"></i> Projet précédent</span>
-                <span class="disabled">Projet suivant <i class="fas fa-chevron-right"></i></span>
+                <button class="btn-back" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i> Retour
+                </button>
             </div>
         `;
         const container = document.getElementById('explorerContent');
@@ -1829,12 +1886,20 @@
         }
     }
 
+    // MODIFICATION ICI : AFFICHE LA VIGNETTE SI DISPONIBLE
     function renderProjects(container, projects) {
         let html = '<div class="folder-grid projects-grid">';
         projects.forEach(project => {
+            let iconHtml = '';
+            if (project.thumbnail) {
+                iconHtml = `<img src="${project.thumbnail}" alt="${project.title}" class="project-thumbnail">`;
+            } else {
+                iconHtml = `<div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>`;
+            }
+            
             html += `
                 <div class="folder-item project-item" onclick="openProjectFromName('${project.title}')">
-                    <div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>
+                    ${iconHtml}
                     <div class="folder-name">${project.title}</div>
                     <div class="folder-info">${project.tags.slice(0, 3).join(' • ')}</div>
                 </div>
@@ -1860,6 +1925,7 @@
                             item.name.includes('Cybersécurité') ? 'folder-green' :
                             item.name.includes('Support') ? 'folder-red' :
                             item.name.includes('Stage') ? 'folder-orange' :
+                            item.name.includes('Certifications') ? 'folder-cyan' :
                             item.name.includes('1ère') ? 'folder-purple' :
                             item.name.includes('2ème') ? 'folder-purple' : 'folder-yellow';
             const count = item.projects ? item.projects.length : item.children ? item.children.length : 0;
