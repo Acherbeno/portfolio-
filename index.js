@@ -254,30 +254,30 @@ const fileSystem = {
                     title: 'Routage inter-VLAN HSRP',
                     description: 'Mise en place d\'un routage inter-VLAN avec HSRP (Hot Standby Router Protocol) pour assurer la redondance et la haute disponibilité du réseau.',
                     tags: ['HSRP', 'VLAN', 'Routage', 'Cisco'],
-                    images: ['/image/topologie-vlan.png', '/image/routage-vlan.png'],
+                    images: ['image/topologie-vlan.png', 'image/routage-vlan.png'],
                     files: [
-                        { name: 'Configuration HSRP', url: '/image/hsrp-config.pdf', icon: 'fa-file-pdf' },
-                        { name: 'Topologie complète', url: '/image/topologie-vlan.png', icon: 'fa-file-image' }
+                        { name: 'Configuration HSRP', url: 'image/hsrp-config.pdf', icon: 'fa-file-pdf' },
+                        { name: 'Topologie complète', url: 'image/topologie-vlan.png', icon: 'fa-file-image' }
                     ]
                 },
                 {
                     title: 'Segmentation VLAN et ACL',
                     description: 'Conception d\'une architecture VLAN sécurisée avec des ACL (Access Control Lists) pour contrôler les flux entre les différents services.',
                     tags: ['VLAN', 'ACL', 'Sécurité', 'Cisco'],
-                    images: ['/image/vlan-topologie.png', '/image/acl-config.png'],
+                    images: ['image/vlan-topologie.png', 'image/acl-config.png'],
                     files: [
-                        { name: 'Configuration VLAN', url: '/image/vlan-config.pdf', icon: 'fa-file-pdf' },
-                        { name: 'Règles ACL', url: '/image/acl-rules.pdf', icon: 'fa-file-pdf' }
+                        { name: 'Configuration VLAN', url: 'image/vlan-config.pdf', icon: 'fa-file-pdf' },
+                        { name: 'Règles ACL', url: 'image/acl-rules.pdf', icon: 'fa-file-pdf' }
                     ]
                 },
                 {
                     title: 'NAT et PAT - Accès Internet',
                     description: 'Configuration NAT (Network Address Translation) et PAT (Port Address Translation) pour permettre l\'accès à Internet depuis un réseau privé.',
                     tags: ['NAT', 'PAT', 'Cisco', 'Réseau'],
-                    images: ['/image/nat-config.png', '/image/pat-config.png'],
+                    images: ['image/nat-config.png', 'image/pat-config.png'],
                     files: [
-                        { name: 'Configuration NAT', url: '/image/nat-config.pdf', icon: 'fa-file-pdf' },
-                        { name: 'Fichier Packet Tracer', url: '/image/nat.pkt', icon: 'fa-file-archive' }
+                        { name: 'Configuration NAT', url: 'image/nat-config.pdf', icon: 'fa-file-pdf' },
+                        { name: 'Fichier Packet Tracer', url: 'image/nat.pkt', icon: 'fa-file-archive' }
                     ]
                 }
             ]
@@ -291,19 +291,19 @@ const fileSystem = {
                     title: 'Infrastructure Windows Server',
                     description: 'Déploiement complet d\'un domaine Active Directory avec services DHCP, DNS et GPO pour une gestion centralisée des utilisateurs.',
                     tags: ['Windows Server', 'AD DS', 'DHCP', 'DNS'],
-                    images: ['/image/win-server-install.png', '/image/ad-ds-config.png'],
+                    images: ['image/win-server-install.png', 'image/ad-ds-config.png'],
                     files: [
-                        { name: 'Guide d\'installation', url: '/image/win-server-guide.pdf', icon: 'fa-file-pdf' },
-                        { name: 'Configuration AD DS', url: '/image/ad-ds-config.pdf', icon: 'fa-file-pdf' }
+                        { name: 'Guide d\'installation', url: 'image/win-server-guide.pdf', icon: 'fa-file-pdf' },
+                        { name: 'Configuration AD DS', url: 'image/ad-ds-config.pdf', icon: 'fa-file-pdf' }
                     ]
                 },
                 {
                     title: 'Administration Linux Debian',
                     description: 'Configuration d\'un serveur Debian avec services web (Apache/Nginx), base de données (MySQL) et gestion des utilisateurs.',
                     tags: ['Linux', 'Debian', 'Apache', 'MySQL'],
-                    images: ['/image/debian-server.png'],
+                    images: ['image/debian-server.png'],
                     files: [
-                        { name: 'Configuration Debian', url: '/image/debian-config.pdf', icon: 'fa-file-pdf' }
+                        { name: 'Configuration Debian', url: 'image/debian-config.pdf', icon: 'fa-file-pdf' }
                     ]
                 }
             ]
@@ -317,27 +317,27 @@ const fileSystem = {
                     title: 'Sécurisation Pare-feu',
                     description: 'Mise en place de règles de pare-feu pour protéger le réseau contre les attaques extérieures et contrôler les flux entrants/sortants.',
                     tags: ['Firewall', 'Iptables', 'Sécurité'],
-                    images: ['/image/firewall-rules.png'],
+                    images: ['image/firewall-rules.png'],
                     files: [
-                        { name: 'Règles Firewall', url: '/image/firewall-rules.pdf', icon: 'fa-file-pdf' }
+                        { name: 'Règles Firewall', url: 'image/firewall-rules.pdf', icon: 'fa-file-pdf' }
                     ]
                 },
                 {
                     title: 'Audit de sécurité',
                     description: 'Réalisation d\'un audit complet pour identifier les vulnérabilités et proposer des solutions de renforcement.',
                     tags: ['Audit', 'Vulnérabilité', 'Hardening'],
-                    images: ['/image/security-audit.png'],
+                    images: ['image/security-audit.png'],
                     files: [
-                        { name: 'Rapport d\'audit', url: '/image/security-audit.pdf', icon: 'fa-file-pdf' }
+                        { name: 'Rapport d\'audit', url: 'image/security-audit.pdf', icon: 'fa-file-pdf' }
                     ]
                 },
                 {
                     title: 'Hardening Linux',
                     description: 'Durcissement d\'un serveur Linux : configuration sécurisée, suppression des services inutiles, gestion des accès.',
                     tags: ['Linux', 'Hardening', 'Sécurité'],
-                    images: ['/image/hardening-linux.png'],
+                    images: ['image/hardening-linux.png'],
                     files: [
-                        { name: 'Script de durcissement', url: '/image/hardening-linux.txt', icon: 'fa-file-alt' }
+                        { name: 'Script de durcissement', url: 'image/hardening-linux.txt', icon: 'fa-file-alt' }
                     ]
                 }
             ]
@@ -351,18 +351,18 @@ const fileSystem = {
                     title: 'Déploiement Windows 11',
                     description: 'Déploiement automatisé de postes Windows 11 avec configuration des mises à jour, sécurisation et optimisation.',
                     tags: ['Windows 11', 'Déploiement', 'MDT'],
-                    images: ['/image/win11-deploy.png'],
+                    images: ['image/win11-deploy.png'],
                     files: [
-                        { name: 'Guide de déploiement', url: '/image/windows11.docx', icon: 'fa-file-word' }
+                        { name: 'Guide de déploiement', url: 'image/windows11.docx', icon: 'fa-file-word' }
                     ]
                 },
                 {
                     title: 'Maintenance et Diagnostic',
                     description: 'Procédures de maintenance préventive et curative, diagnostic matériel et logiciel, résolution de problèmes.',
                     tags: ['Maintenance', 'Diagnostic', 'Support'],
-                    images: ['/image/diagnostic.png'],
+                    images: ['image/diagnostic.png'],
                     files: [
-                        { name: 'Script de maintenance', url: '/image/maintenance.ps1', icon: 'fa-file-code' }
+                        { name: 'Script de maintenance', url: 'image/maintenance.ps1', icon: 'fa-file-code' }
                     ]
                 }
             ]
@@ -381,22 +381,22 @@ const fileSystem = {
                             title: 'Stage 1ère année - Découverte',
                             description: 'Migration de postes de travail de Windows 10 vers Windows 11 dans le cadre de mes études. Utilisation de Rufus pour créer une clé USB bootable, installation et configuration des postes pour les besoins pédagogiques du BTS SIO. Optimisation des performances et sécurisation des systèmes.',
                             tags: ['Découverte', 'Migration', 'Rufus', 'Clé USB'],
-                            images: ['/image/premiere.jpg', '/image/deuxieme.png'],
+                            images: ['image/premiere.jpg', 'image/deuxieme.png'],
                             files: [
-                                { name: 'Rapport de stage 1ère année', url: '/image/rapport-stage1.pdf', icon: 'fa-file-pdf' },
-                                { name: 'Rapport de stage', url: '/image/rapport.pdf', icon: 'fa-file-pdf' },
-                                { name: 'Présentation soutenance', url: '/image/soutenance1.pptx', icon: 'fa-file-powerpoint' },
-                                { name: 'Installation Windows 11', url: '/image/windows11.pdf', icon: 'fa-file-pdf' }
+                                { name: 'Rapport de stage 1ère année', url: 'image/rapport-stage1.pdf', icon: 'fa-file-pdf' },
+                                { name: 'Rapport de stage', url: 'image/rapport.pdf', icon: 'fa-file-pdf' },
+                                { name: 'Présentation soutenance', url: 'image/soutenance1.pptx', icon: 'fa-file-powerpoint' },
+                                { name: 'Installation Windows 11', url: 'image/windows11.pdf', icon: 'fa-file-pdf' }
                             ]
                         },
                         {
                             title: 'Projet - Installation postes de travail',
                             description: 'Installation et configuration de postes de travail dans le cadre des travaux pratiques du BTS SIO.',
                             tags: ['Windows 11', 'Installation', 'Postes de travail'],
-                            images: ['/image/install-poste1.png', '/image/install-poste2.png'],
+                            images: ['image/install-poste1.png', 'image/install-poste2.png'],
                             files: [
-                                { name: 'Procédure d\'installation', url: '/image/windows11.pdf', icon: 'fa-file-pdf' },
-                                { name: 'Checklist déploiement', url: '/image/checklist.docx', icon: 'fa-file-word' }
+                                { name: 'Procédure d\'installation', url: 'image/windows11.pdf', icon: 'fa-file-pdf' },
+                                { name: 'Checklist déploiement', url: 'image/checklist.docx', icon: 'fa-file-word' }
                             ]
                         }
                     ]
@@ -410,30 +410,30 @@ const fileSystem = {
                             title: 'Stage 2ème année - Administration',
                             description: 'Stage en administration systèmes et réseaux. Gestion des serveurs, déploiement d\'infrastructures et mise en place de solutions de sauvegarde.',
                             tags: ['Administration', 'Serveurs', 'Infrastructure'],
-                            images: ['/image/stage2-1.png', '/image/stage2-2.png'],
+                            images: ['image/stage2-1.png', 'image/stage2-2.png'],
                             files: [
-                                { name: 'Rapport de stage 2ème année', url: '/image/rapport-stage2.pdf', icon: 'fa-file-pdf' },
-                                { name: 'Présentation soutenance', url: '/image/soutenance2.pptx', icon: 'fa-file-powerpoint' }
+                                { name: 'Rapport de stage 2ème année', url: 'image/rapport-stage2.pdf', icon: 'fa-file-pdf' },
+                                { name: 'Présentation soutenance', url: 'image/soutenance2.pptx', icon: 'fa-file-powerpoint' }
                             ]
                         },
                         {
                             title: 'Projet - Migration serveur',
                             description: 'Migration d\'un serveur physique vers une infrastructure virtualisée avec VMware ESXi. Planification, exécution et validation.',
                             tags: ['Migration', 'Virtualisation', 'VMware'],
-                            images: ['/image/migration-server1.png', '/image/migration-server2.png'],
+                            images: ['image/migration-server1.png', 'image/migration-server2.png'],
                             files: [
-                                { name: 'Plan de migration', url: '/image/plan-migration.pdf', icon: 'fa-file-pdf' },
-                                { name: 'Documentation technique', url: '/image/doc-technique.pdf', icon: 'fa-file-pdf' }
+                                { name: 'Plan de migration', url: 'image/plan-migration.pdf', icon: 'fa-file-pdf' },
+                                { name: 'Documentation technique', url: 'image/doc-technique.pdf', icon: 'fa-file-pdf' }
                             ]
                         },
                         {
                             title: 'Mise en place d\'un serveur de sauvegarde',
                             description: 'Déploiement et configuration d\'un serveur de sauvegarde avec Veeam Backup & Replication pour assurer la continuité d\'activité.',
                             tags: ['Sauvegarde', 'Veeam', 'Continuité'],
-                            images: ['/image/backup-server.png'],
+                            images: ['image/backup-server.png'],
                             files: [
-                                { name: 'Configuration Veeam', url: '/image/veeam-config.pdf', icon: 'fa-file-pdf' },
-                                { name: 'Plan de reprise d\'activité', url: '/image/pra.pdf', icon: 'fa-file-pdf' }
+                                { name: 'Configuration Veeam', url: 'image/veeam-config.pdf', icon: 'fa-file-pdf' },
+                                { name: 'Plan de reprise d\'activité', url: 'image/pra.pdf', icon: 'fa-file-pdf' }
                             ]
                         }
                     ]
@@ -450,10 +450,10 @@ const fileSystem = {
                     title: 'Certification L\'ATELIER RGPD',
                     description: 'Obtention de la certification L\'ATELIER RGPD. Cette formation m\'a permis d\'acquérir les compétences nécessaires pour comprendre et appliquer le Règlement Général sur la Protection des Données (RGPD) au sein d\'une organisation. J\'ai appris à identifier les données personnelles, à mettre en place des mesures de sécurité adéquates, à gérer les consentements et à assurer la conformité des traitements de données.',
                     tags: ['RGPD', 'Cybersécurité', 'Données Personnelles', 'Conformité'],
-                    thumbnail: '/image/certif.png',
-                    images: ['/image/certif.png'], 
+                    thumbnail: 'image/certif.png',
+                    images: ['image/certif.png'], 
                     files: [
-                        { name: 'Certificat L\'ATELIER RGPD', url: '/image/certification-rgpd.pdf', icon: 'fa-file-pdf' }
+                        { name: 'Certificat L\'ATELIER RGPD', url: 'image/certification-rgpd.pdf', icon: 'fa-file-pdf' }
                     ]
                 }
             ]
