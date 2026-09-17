@@ -79,6 +79,7 @@
                 <p>│   📁 Support IT</p>
                 <p>│   📁 Stage</p>
                 <p>│   📁 Certifications</p>
+                <p>│   📁 Fiche</p>
                 <p>└───$</p>
             </div>
         </div>
@@ -192,6 +193,11 @@
                         <div class="folder-item" onclick="showFolder('certifications')">
                             <div class="folder-icon folder-cyan"><i class="fas fa-folder"></i></div>
                             <div class="folder-name">📁 Certifications</div>
+                            <div class="folder-info">1 élément</div>
+                        </div>
+                        <div class="folder-item" onclick="showFolder('fiche')">
+                            <div class="folder-icon folder-pink"><i class="fas fa-folder"></i></div>
+                            <div class="folder-name">📄 Fiche</div>
                             <div class="folder-info">1 élément</div>
                         </div>
                     </div>
@@ -331,6 +337,17 @@
                             <img src="image/certif.png" alt="Certification RGPD" class="project-thumbnail">
                             <div class="folder-name">Certification L'ATELIER RGPD</div>
                             <div class="folder-info">RGPD • Cybersécurité</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== DOSSIER FICHE ===== -->
+                <div id="view-fiche" class="view-section">
+                    <div class="folder-grid projects-grid">
+                        <div class="folder-item project-item" onclick="showProject('projet-fiche')">
+                            <div class="folder-icon" style="color: #ec4899; font-size: 4rem;">📄</div>
+                            <div class="folder-name">Ma Fiche</div>
+                            <div class="folder-info">PDF • Document</div>
                         </div>
                     </div>
                 </div>
@@ -834,6 +851,32 @@
                     </div>
                 </div>
 
+                <!-- ===== PROJET : FICHE ===== -->
+                <div id="view-projet-fiche" class="view-section">
+                    <div class="project-detail">
+                        <div class="project-header">
+                            <h2>📄 Ma Fiche</h2>
+                            <div class="project-tags">
+                                <span>Fiche</span><span>PDF</span><span>Document</span>
+                            </div>
+                        </div>
+                        <div class="project-desc">Fiche PDF à consulter directement dans l'aperçu intégré.</div>
+                        <div class="project-section">
+                            <h3><i class="fas fa-file-pdf"></i> Document</h3>
+                            <div class="project-files">
+                                <a href="#" onclick="openPDF('image/fiche.pdf'); return false;">
+                                    <i class="fas fa-file-pdf"></i> Ouvrir la fiche PDF
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-nav">
+                            <button class="btn-back" onclick="showFolder('fiche')">
+                                <i class="fas fa-arrow-left"></i> Retour
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!-- ===== FIN CONTENU ===== -->
         </div>
@@ -849,7 +892,11 @@
                 <p>Pour toute prise de contact, utilisez le formulaire ou contactez-moi directement.</p>
                 <div class="contact-item"><i class="fas fa-envelope"></i> bramiacher@mail.com</div>
                 <div class="contact-item"><i class="fas fa-phone-alt"></i> 06 12 63 13 92</div>
-                <div class="contact-item"><i class="fab fa-github"></i> github.com/acher-sisr</div>
+                <div class="contact-item">
+    <a href="https://github.com/Acherbeno" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1rem;">
+        <i class="fab fa-github"></i> github.com/Acherbeno
+    </a>
+</div>
                 <div class="contact-item"><i class="fab fa-linkedin"></i> linkedin.com/in/acher</div>
             </div>
             <div class="contact-right fade-up">

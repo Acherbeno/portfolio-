@@ -307,7 +307,8 @@ const viewNames = {
     'view-stage': '📁 Stage',
     'view-stage1': '📁 1ère année',
     'view-stage2': '📁 2ème année',
-    'view-certifications': '📁 Certifications'
+    'view-certifications': '📁 Certifications',
+    'view-fiche': '📄 Fiche'
 };
 
 function updateBreadcrumbFromView(viewId) {
@@ -338,6 +339,8 @@ function updateBreadcrumbFromView(viewId) {
             path.push({ id: 'view-stage2', name: '📁 2ème année' });
         } else if (viewId.includes('rgpd')) {
             path.push({ id: 'view-certifications', name: '📁 Certifications' });
+        } else if (viewId.includes('fiche')) {
+            path.push({ id: 'view-fiche', name: '📄 Fiche' });
         }
     } else if (viewId.startsWith('view-') && viewId !== 'view-root') {
         // Dossier simple
@@ -459,5 +462,154 @@ window.addEventListener('load', () => {
     observeFadeElements();
     if (window.scrollY > 100) {
         scrollButtons.classList.add('visible');
+    }
+});
+
+// ============================================
+// ===== BEAUTÉ+ : BARRE DE PROGRESSION =====
+// ============================================
+const progressBar = document.createElement('div');
+progressBar.id = 'scroll-progress-bar';
+progressBar.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, #2563eb, #8b5cf6, #ec4899, #2563eb);
+    background-size: 300% 100%;
+    z-index: 99999;
+    transition: width 0.1s ease;
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.6), 0 0 30px rgba(139, 92, 246, 0.4);
+    pointer-events: none;
+    animation: progressGradient 3s linear infinite;
+`;
+
+// Animation du dégradé
+const progressStyle = document.createElement('style');
+progressStyle.textContent = `
+    @keyframes progressGradient {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 300% 50%; }
+    }
+`;
+document.head.appendChild(progressStyle);
+document.body.appendChild(progressBar);
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = scrollPercent + '%';
+});
+
+// ============================================
+// ===== BEAUTÉ+ : EFFET TILT 3D SUR CARTES =====
+// ============================================
+document.querySelectorAll('.tilt-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -3;
+        const rotateY = ((x - centerX) / centerX) * 3;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+    });
+});
+
+// ============================================
+// ===== BEAUTÉ+ : PARALLAX LÉGER SUR LE HERO =====
+// ============================================
+const heroSection = document.querySelector('.hero');
+if (heroSection) {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        if (scrolled < window.innerHeight) {
+            const heroText = heroSection.querySelector('.hero-text');
+            const heroImage = heroSection.querySelector('.hero-image');
+            if (heroText) heroText.style.transform = `translateY(${scrolled * 0.15}px)`;
+            if (heroImage) heroImage.style.transform = `translateY(${scrolled * 0.25}px)`;
+        }
+    });
+}
+
+// ============================================
+// ===== BEAUTÉ+ : EFFET RIPPLE AU CLIC =====
+// ============================================
+document.querySelectorAll('.btn, .btn-cv, .btn-rapport, .btn-back, button[type="submit"]').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+
+        ripple.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            left: ${x}px;
+            top: ${y}px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: rippleEffect 0.6s ease-out;
+            pointer-events: none;
+            z-index: 10;
+        `;
+        this.style.position = 'relative';
+        this.style.overflow = 'hidden';
+        this.appendChild(ripple);
+
+        setTimeout(() => ripple.remove(), 600);
+    });
+});
+
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `
+    @keyframes rippleEffect {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(rippleStyle);
+
+// ============================================
+// ===== BEAUTÉ+ : NAVBAR SCROLL EFFECT =====
+// ============================================
+const navbar = document.querySelector('.navbar');
+if (navbar) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.style.boxShadow = '0 8px 40px rgba(37, 99, 235, 0.15)';
+            navbar.style.borderBottomColor = 'rgba(37, 99, 235, 0.2)';
+        } else {
+            navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.05)';
+            navbar.style.borderBottomColor = 'rgba(255, 255, 255, 0.3)';
+        }
+    });
+}
+
+// ============================================
+// ===== BEAUTÉ+ : LETTRES QUI APPARAISSENT =====
+// ============================================
+window.addEventListener('load', () => {
+    const heroTitle = document.querySelector('.hero-text h1');
+    if (heroTitle) {
+        heroTitle.style.opacity = '0';
+        heroTitle.style.transform = 'translateY(30px)';
+        heroTitle.style.transition = 'opacity 1s ease, transform 1s ease';
+        setTimeout(() => {
+            heroTitle.style.opacity = '1';
+            heroTitle.style.transform = 'translateY(0)';
+        }, 300);
     }
 });
