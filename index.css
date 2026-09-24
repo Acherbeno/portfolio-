@@ -42,7 +42,6 @@ body {
     position: relative;
 }
 
-/* Fond animé subtil */
 body::before {
     content: '';
     position: fixed;
@@ -76,9 +75,6 @@ body.dark::before {
         radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.08) 0%, transparent 50%);
 }
 
-/* ============================================
-   BARRE DE PROGRESSION SCROLL
-   ============================================ */
 body::after {
     content: '';
     position: fixed;
@@ -92,9 +88,6 @@ body::after {
     box-shadow: 0 0 15px var(--primary-glow);
 }
 
-/* ============================================
-   CANVAS PARTICLES
-   ============================================ */
 #particles-canvas {
     position: fixed;
     top: 0;
@@ -105,9 +98,6 @@ body::after {
     pointer-events: none;
 }
 
-/* ============================================
-   THEME TOGGLE
-   ============================================ */
 .theme-toggle {
     position: fixed;
     bottom: 25px;
@@ -140,9 +130,6 @@ body::after {
     50% { background-position: 100% 50%; }
 }
 
-/* ============================================
-   CONTAINER
-   ============================================ */
 .container {
     max-width: 1300px;
     margin: 0 auto;
@@ -151,9 +138,6 @@ body::after {
     z-index: 1;
 }
 
-/* ============================================
-   NAVBAR — Glassmorphism
-   ============================================ */
 .navbar {
     position: fixed;
     top: 0;
@@ -209,7 +193,7 @@ body.dark .navbar {
     50% { transform: scale(1.1); filter: drop-shadow(0 0 15px var(--primary)); }
 }
 
-.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
 
 .nav-links a {
     text-decoration: none;
@@ -249,9 +233,6 @@ body.dark .navbar {
     color: inherit;
 }
 
-/* ============================================
-   HERO
-   ============================================ */
 .hero {
     min-height: 90vh;
     display: flex;
@@ -261,6 +242,7 @@ body.dark .navbar {
     position: relative;
     overflow: hidden;
     animation: heroShift 15s ease-in-out infinite alternate;
+    padding-top: 80px;
 }
 
 @keyframes heroShift {
@@ -377,9 +359,6 @@ body.dark .hero {
     50% { border-color: transparent; }
 }
 
-/* ============================================
-   BOUTONS
-   ============================================ */
 .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 .btn {
@@ -458,9 +437,6 @@ body.dark .btn-outline {
     background: rgba(37, 99, 235, 0.05);
 }
 
-/* ============================================
-   TERMINAL CARD — avec effet glow
-   ============================================ */
 .terminal-card {
     background: var(--terminal-bg);
     border-radius: 20px;
@@ -515,13 +491,10 @@ body.dark .btn-outline {
 .terminal-card p { margin: 8px 0; color: #86efac; }
 .terminal-card p:first-child { margin-top: 30px; }
 
-/* ============================================
-   SECTIONS
-   ============================================ */
 section { padding: 90px 0 80px; position: relative; z-index: 1; }
 
 .section-title {
-    font-size: 1rem;
+    font-size: 1.8rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
@@ -542,9 +515,6 @@ section { padding: 90px 0 80px; position: relative; z-index: 1; }
     filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.3));
 }
 
-/* ============================================
-   ABOUT
-   ============================================ */
 .about-content {
     max-width: 900px;
     margin: 0 auto;
@@ -602,9 +572,6 @@ body.dark .about-content {
     font-weight: 800;
 }
 
-/* ============================================
-   STATS
-   ============================================ */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -669,9 +636,6 @@ body.dark .stat-item {
     margin-top: 0.3rem;
 }
 
-/* ============================================
-   CV BUTTONS
-   ============================================ */
 .cv-button-container {
     margin-top: 1.5rem;
     padding-top: 1.5rem;
@@ -765,9 +729,6 @@ body.dark .cv-button-container { border-top-color: var(--border-dark); }
     box-shadow: 0 20px 45px rgba(139, 92, 246, 0.5), 0 0 30px rgba(236, 72, 153, 0.4);
 }
 
-/* ============================================
-   FILE EXPLORER — Glassmorphism
-   ============================================ */
 .file-explorer {
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(20px) saturate(180%);
@@ -860,6 +821,7 @@ body.dark .explorer-addressbar .address-path {
 
 .explorer-addressbar .address-path i { color: var(--primary); }
 .explorer-addressbar .address-path span { color: var(--text-light); }
+body.dark .explorer-addressbar .address-path span { color: var(--text-dark); }
 
 .explorer-addressbar .view-options { display: flex; gap: 0.3rem; }
 
@@ -883,9 +845,6 @@ body.dark .explorer-addressbar .address-path {
 
 .explorer-content { padding: 1.5rem; min-height: 400px; }
 
-/* ============================================
-   DOSSIERS
-   ============================================ */
 .folder-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -1022,12 +981,11 @@ body.dark .folder-item.project-item {
     transition: 0.3s;
 }
 
+body.dark .folder-item .folder-name { color: var(--text-dark); }
+
 .folder-item:hover .folder-name { color: var(--primary); }
 .folder-item .folder-info { font-size: 0.75rem; color: var(--secondary); margin-top: 0.2rem; }
 
-/* ============================================
-   TILT CARD
-   ============================================ */
 .tilt-card {
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -1036,9 +994,6 @@ body.dark .folder-item.project-item {
     transform: perspective(1000px) rotateX(2deg) rotateY(4deg) scale(1.02);
 }
 
-/* ============================================
-   FOOTER
-   ============================================ */
 .wave-footer {
     background: linear-gradient(135deg, #131c31, #0a0f1e);
     color: var(--text-dark);
@@ -1088,9 +1043,6 @@ body.dark .wave-footer { background: linear-gradient(135deg, #0a0f1e, #050810); 
     margin-left: 5px;
 }
 
-/* ============================================
-   PROJECT DETAIL
-   ============================================ */
 .project-detail { padding: 0.5rem 0; animation: fadeInUp 0.5s ease; }
 
 @keyframes fadeInUp {
@@ -1236,6 +1188,10 @@ body.dark .project-detail .project-images img {
     overflow: hidden;
 }
 
+body.dark .project-detail .project-files a {
+    color: var(--text-dark);
+}
+
 .project-detail .project-files a::before {
     content: '';
     position: absolute;
@@ -1293,6 +1249,7 @@ body.dark .project-detail .project-nav { border-top-color: var(--border-dark); }
     position: relative;
     overflow: hidden;
     animation: gradientShift 6s ease infinite;
+    font-family: inherit;
 }
 
 .btn-back::after {
@@ -1313,9 +1270,6 @@ body.dark .project-detail .project-nav { border-top-color: var(--border-dark); }
     box-shadow: 0 20px 45px rgba(37, 99, 235, 0.5), 0 0 30px var(--accent-glow);
 }
 
-/* ============================================
-   BREADCRUMB
-   ============================================ */
 .breadcrumb {
     display: flex;
     align-items: center;
@@ -1359,9 +1313,6 @@ body.dark .breadcrumb .crumb.active { color: var(--text-dark); }
 
 .breadcrumb .separator { color: var(--secondary); font-size: 0.7rem; }
 
-/* ============================================
-   FILE LIST
-   ============================================ */
 .file-list { display: flex; flex-direction: column; gap: 0.3rem; }
 
 .file-item {
@@ -1393,9 +1344,6 @@ body.dark .breadcrumb .crumb.active { color: var(--text-dark); }
     color: var(--secondary);
 }
 
-/* ============================================
-   EMPTY FOLDER
-   ============================================ */
 .empty-folder {
     text-align: center;
     padding: 3rem 1rem;
@@ -1409,9 +1357,6 @@ body.dark .breadcrumb .crumb.active { color: var(--text-dark); }
     animation: pulse 2s ease-in-out infinite;
 }
 
-/* ============================================
-   CONTACT
-   ============================================ */
 .contact-section {
     background: linear-gradient(135deg, rgba(238, 242, 255, 0.5), rgba(252, 231, 243, 0.3));
     border-radius: 48px;
@@ -1497,6 +1442,10 @@ input, textarea {
     transition: 0.3s;
 }
 
+body.dark input, body.dark textarea {
+    border-color: var(--border-dark);
+}
+
 input:focus, textarea:focus {
     outline: none;
     border-color: var(--primary);
@@ -1541,9 +1490,6 @@ button[type="submit"]:hover {
     box-shadow: 0 20px 45px rgba(37, 99, 235, 0.5), 0 0 30px var(--accent-glow);
 }
 
-/* ============================================
-   FADE-UP ANIMATIONS
-   ============================================ */
 .fade-up {
     opacity: 0;
     transform: translateY(50px);
@@ -1552,9 +1498,6 @@ button[type="submit"]:hover {
 
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-/* ============================================
-   SCROLL BUTTONS
-   ============================================ */
 .scroll-buttons {
     position: fixed;
     right: 30px;
@@ -1648,9 +1591,6 @@ body.dark .scroll-btn .tooltip {
 
 body.dark .scroll-btn .tooltip::after { border-left-color: var(--text-dark); }
 
-/* ============================================
-   PDF MODAL
-   ============================================ */
 .pdf-modal {
     display: none;
     position: fixed;
@@ -1741,9 +1681,6 @@ body.dark .pdf-modal-close { color: white; background: #243049; }
     animation: pulse 2s ease-in-out infinite;
 }
 
-/* ============================================
-   RESPONSIVE
-   ============================================ */
 @media (max-width: 768px) {
     .scroll-buttons { right: 16px; bottom: 90px; }
     .scroll-btn { width: 42px; height: 42px; font-size: 1rem; }
@@ -1774,6 +1711,7 @@ body.dark .pdf-modal-close { color: white; background: #243049; }
         transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 2px 0 30px rgba(0, 0, 0, 0.15);
         z-index: 998;
+        gap: 1.5rem;
     }
     body.dark .nav-links { background: rgba(10, 15, 30, 0.98); }
     .nav-links.active { left: 0; }
@@ -1781,7 +1719,7 @@ body.dark .pdf-modal-close { color: white; background: #243049; }
     .hero-text h1 { font-size: 2.6rem; }
     .hero-content { flex-direction: column-reverse; text-align: center; }
     .btn-group { justify-content: center; }
-    .section-title { font-size: 1.8rem; }
+    .section-title { font-size: 1.5rem; }
     .button-group-about { flex-direction: column; align-items: center; }
     .pdf-modal-content { width: 100%; height: 100%; border-radius: 0; }
     .folder-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
@@ -1791,9 +1729,6 @@ body.dark .pdf-modal-close { color: white; background: #243049; }
     .project-detail .project-images img { max-width: 100%; }
 }
 
-/* ============================================
-   SCROLLBAR PERSONNALISÉE
-   ============================================ */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
 
@@ -1809,9 +1744,6 @@ body.dark .pdf-modal-close { color: white; background: #243049; }
     background-clip: content-box;
 }
 
-/* ============================================
-   SÉLECTION DE TEXTE
-   ============================================ */
 ::selection {
     background: var(--primary);
     color: white;
@@ -1821,4 +1753,121 @@ body.dark .pdf-modal-close { color: white; background: #243049; }
 ::-moz-selection {
     background: var(--primary);
     color: white;
+}
+
+/* ============================================
+   SÉLECTEUR DE LANGUE (NOUVEAU)
+   ============================================ */
+.lang-selector {
+    position: relative;
+    list-style: none;
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    color: inherit;
+    padding: 0.45rem 0.9rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    font-family: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+body.dark .lang-btn {
+    background: rgba(139, 92, 246, 0.12);
+    border-color: rgba(139, 92, 246, 0.3);
+}
+
+.lang-btn:hover {
+    background: var(--gradient-1);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px var(--primary-glow);
+}
+
+.lang-btn i.fa-globe {
+    color: var(--primary);
+    transition: 0.3s;
+}
+
+.lang-btn:hover i.fa-globe {
+    color: white;
+    transform: rotate(20deg);
+}
+
+.lang-btn i.fa-chevron-down {
+    font-size: 0.7rem;
+    transition: transform 0.3s;
+}
+
+.lang-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 14px;
+    box-shadow: 0 15px 40px -8px rgba(0, 0, 0, 0.2),
+                0 0 30px rgba(37, 99, 235, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    list-style: none;
+    padding: 0.5rem;
+    min-width: 160px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+}
+
+body.dark .lang-menu {
+    background: rgba(19, 28, 49, 0.95);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 15px 40px -8px rgba(0, 0, 0, 0.6),
+                0 0 30px rgba(139, 92, 246, 0.2);
+}
+
+.lang-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.lang-option {
+    padding: 0.65rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.25s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lang-option:hover {
+    background: var(--gradient-1);
+    color: white;
+    transform: translateX(4px);
+    box-shadow: 0 5px 15px var(--primary-glow);
+}
+
+@media (max-width: 800px) {
+    .lang-selector { margin-top: 1rem; }
+    .lang-menu {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    .lang-menu.active {
+        transform: translateX(-50%) translateY(0);
+    }
 }

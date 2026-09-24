@@ -82,14 +82,18 @@ document.addEventListener('mousemove', (e) => {
 animateParticles();
 
 // ===== TYPING EFFECT =====
-const typingTexts = ['Systèmes & Réseaux', 'Infrastructure IT', 'Cybersécurité', 'Solutions Robustes'];
 let textIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 const typingElement = document.getElementById('typingText');
 
 function typeEffect() {
-    const currentText = typingTexts[textIndex];
+    const typingTexts = (typeof currentLang !== 'undefined' && currentLang === 'en')
+        ? ['Systems & Networks', 'IT Infrastructure', 'Cybersecurity', 'Robust Solutions']
+        : ['Systèmes & Réseaux', 'Infrastructure IT', 'Cybersécurité', 'Solutions Robustes'];
+
+    const currentText = typingTexts[textIndex % typingTexts.length];
+
     if (isDeleting) {
         typingElement.textContent = currentText.substring(0, charIndex - 1);
         charIndex--;
@@ -116,6 +120,13 @@ function typeEffect() {
 }
 
 setTimeout(typeEffect, 1000);
+
+// Redémarrer le typing quand on change de langue
+window.addEventListener('languageChanged', () => {
+    charIndex = 0;
+    isDeleting = false;
+    textIndex = 0;
+});
 
 // ===== COUNTER ANIMATION =====
 function animateCounters() {
@@ -257,7 +268,6 @@ function showView(viewId) {
         view.style.display = 'block';
         view.classList.add('active');
         currentView = viewId;
-        // Scroll en haut de l'explorateur
         const explorer = document.getElementById('explorerContent');
         if (explorer) explorer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
@@ -311,50 +321,58 @@ const viewNames = {
     'view-fiche': '📄 Fiche'
 };
 
+const viewNamesEN = {
+    'view-root': '📁 Root',
+    'view-reseaux': '🌐 Networks',
+    'view-systemes': '🖥️ Systems',
+    'view-cyber': '🔐 Cybersecurity',
+    'view-support': '🛠️ IT Support',
+    'view-stage': '📁 Internship',
+    'view-stage1': '📁 Year 1',
+    'view-stage2': '📁 Year 2',
+    'view-certifications': '📁 Certifications',
+    'view-fiche': '📄 Sheet'
+};
+
 function updateBreadcrumbFromView(viewId) {
     const breadcrumb = document.getElementById('breadcrumb');
     if (!breadcrumb) return;
     breadcrumb.innerHTML = '';
 
+    const names = (typeof currentLang !== 'undefined' && currentLang === 'en') ? viewNamesEN : viewNames;
     const path = [];
-    // Chemin de base
-    path.push({ id: 'view-root', name: '📁 Racine' });
+    path.push({ id: 'view-root', name: names['view-root'] });
 
-    // Si on est dans un sous-dossier ou projet
     if (viewId.startsWith('view-projet-')) {
-        // Trouver le dossier parent
         if (viewId.includes('hsrp') || viewId.includes('vlan') || viewId.includes('nat')) {
-            path.push({ id: 'view-reseaux', name: '🌐 Réseaux' });
+            path.push({ id: 'view-reseaux', name: names['view-reseaux'] });
         } else if (viewId.includes('winserver') || viewId.includes('debian')) {
-            path.push({ id: 'view-systemes', name: '🖥️ Systèmes' });
+            path.push({ id: 'view-systemes', name: names['view-systemes'] });
         } else if (viewId.includes('firewall') || viewId.includes('audit') || viewId.includes('hardening')) {
-            path.push({ id: 'view-cyber', name: '🔐 Cybersécurité' });
+            path.push({ id: 'view-cyber', name: names['view-cyber'] });
         } else if (viewId.includes('win11') || viewId.includes('maintenance')) {
-            path.push({ id: 'view-support', name: '🛠️ Support IT' });
+            path.push({ id: 'view-support', name: names['view-support'] });
         } else if (viewId.includes('stage1') || viewId.includes('install-poste')) {
-            path.push({ id: 'view-stage', name: '📁 Stage' });
-            path.push({ id: 'view-stage1', name: '📁 1ère année' });
+            path.push({ id: 'view-stage', name: names['view-stage'] });
+            path.push({ id: 'view-stage1', name: names['view-stage1'] });
         } else if (viewId.includes('stage2') || viewId.includes('migration') || viewId.includes('backup')) {
-            path.push({ id: 'view-stage', name: '📁 Stage' });
-            path.push({ id: 'view-stage2', name: '📁 2ème année' });
+            path.push({ id: 'view-stage', name: names['view-stage'] });
+            path.push({ id: 'view-stage2', name: names['view-stage2'] });
         } else if (viewId.includes('rgpd')) {
-            path.push({ id: 'view-certifications', name: '📁 Certifications' });
+            path.push({ id: 'view-certifications', name: names['view-certifications'] });
         } else if (viewId.includes('fiche')) {
-            path.push({ id: 'view-fiche', name: '📄 Fiche' });
+            path.push({ id: 'view-fiche', name: names['view-fiche'] });
         }
     } else if (viewId.startsWith('view-') && viewId !== 'view-root') {
-        // Dossier simple
-        const folderName = viewNames[viewId];
+        const folderName = names[viewId];
         if (folderName) {
-            // Si c'est un sous-dossier de stage
             if (viewId === 'view-stage1' || viewId === 'view-stage2') {
-                path.push({ id: 'view-stage', name: '📁 Stage' });
+                path.push({ id: 'view-stage', name: names['view-stage'] });
             }
             path.push({ id: viewId, name: folderName });
         }
     }
 
-    // Construire le breadcrumb
     path.forEach((item, index) => {
         if (index > 0) {
             const sep = document.createElement('span');
@@ -374,7 +392,6 @@ function updateBreadcrumbFromView(viewId) {
 }
 
 function goToView(viewId) {
-    // Trouver l'index de cette vue dans l'historique
     const index = viewHistory.indexOf(viewId);
     if (index !== -1) {
         viewHistory.splice(index);
@@ -387,7 +404,8 @@ function goToView(viewId) {
 function updatePathFromView(viewId) {
     const pathEl = document.getElementById('currentPath');
     if (pathEl) {
-        const name = viewNames[viewId] || '📁 Racine';
+        const names = (typeof currentLang !== 'undefined' && currentLang === 'en') ? viewNamesEN : viewNames;
+        const name = names[viewId] || names['view-root'];
         pathEl.textContent = name;
     }
 }
@@ -396,7 +414,6 @@ function updatePathFromView(viewId) {
 function setView(view) {
     document.getElementById('viewGrid').classList.toggle('active', view === 'grid');
     document.getElementById('viewList').classList.toggle('active', view === 'list');
-    // Optionnel : gérer une classe sur le conteneur
 }
 
 // ===== DARK MODE =====
@@ -463,10 +480,12 @@ window.addEventListener('load', () => {
     if (window.scrollY > 100) {
         scrollButtons.classList.add('visible');
     }
+    // Init langue
+    
 });
 
 // ============================================
-// ===== BEAUTÉ+ : BARRE DE PROGRESSION =====
+// ===== BARRE DE PROGRESSION =====
 // ============================================
 const progressBar = document.createElement('div');
 progressBar.id = 'scroll-progress-bar';
@@ -485,7 +504,6 @@ progressBar.style.cssText = `
     animation: progressGradient 3s linear infinite;
 `;
 
-// Animation du dégradé
 const progressStyle = document.createElement('style');
 progressStyle.textContent = `
     @keyframes progressGradient {
@@ -504,7 +522,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================
-// ===== BEAUTÉ+ : EFFET TILT 3D SUR CARTES =====
+// ===== EFFET TILT 3D SUR CARTES =====
 // ============================================
 document.querySelectorAll('.tilt-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
@@ -524,7 +542,7 @@ document.querySelectorAll('.tilt-card').forEach(card => {
 });
 
 // ============================================
-// ===== BEAUTÉ+ : PARALLAX LÉGER SUR LE HERO =====
+// ===== PARALLAX LÉGER SUR LE HERO =====
 // ============================================
 const heroSection = document.querySelector('.hero');
 if (heroSection) {
@@ -540,7 +558,7 @@ if (heroSection) {
 }
 
 // ============================================
-// ===== BEAUTÉ+ : EFFET RIPPLE AU CLIC =====
+// ===== EFFET RIPPLE AU CLIC =====
 // ============================================
 document.querySelectorAll('.btn, .btn-cv, .btn-rapport, .btn-back, button[type="submit"]').forEach(btn => {
     btn.addEventListener('click', function(e) {
@@ -583,7 +601,7 @@ rippleStyle.textContent = `
 document.head.appendChild(rippleStyle);
 
 // ============================================
-// ===== BEAUTÉ+ : NAVBAR SCROLL EFFECT =====
+// ===== NAVBAR SCROLL EFFECT =====
 // ============================================
 const navbar = document.querySelector('.navbar');
 if (navbar) {
@@ -599,7 +617,7 @@ if (navbar) {
 }
 
 // ============================================
-// ===== BEAUTÉ+ : LETTRES QUI APPARAISSENT =====
+// ===== TITRE QUI APPARAÎT =====
 // ============================================
 window.addEventListener('load', () => {
     const heroTitle = document.querySelector('.hero-text h1');

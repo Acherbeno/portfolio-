@@ -19,8 +19,8 @@
         <iframe id="pdfFrame" src=""></iframe>
         <div class="pdf-error" id="pdfError">
             <i class="fas fa-file-pdf"></i>
-            <h3>Document non disponible</h3>
-            <p>Le fichier PDF n'a pas encore été ajouté. Vérifie que le fichier existe bien dans le dossier image/</p>
+            <h3 data-i18n="pdf.error.title">Document non disponible</h3>
+            <p data-i18n="pdf.error.desc">Le fichier PDF n'a pas encore été ajouté. Vérifie que le fichier existe bien dans le dossier image/</p>
         </div>
     </div>
 </div>
@@ -29,11 +29,11 @@
 <div class="scroll-buttons" id="scrollButtons">
     <button class="scroll-btn scroll-btn-up" onclick="scrollToTop()" title="Remonter en haut">
         <i class="fas fa-chevron-up"></i>
-        <span class="tooltip">Haut</span>
+        <span class="tooltip" data-i18n="tooltip.top">Haut</span>
     </button>
     <button class="scroll-btn scroll-btn-down" onclick="scrollToBottom()" title="Descendre en bas">
         <i class="fas fa-chevron-down"></i>
-        <span class="tooltip">Bas</span>
+        <span class="tooltip" data-i18n="tooltip.bottom">Bas</span>
     </button>
 </div>
 
@@ -45,10 +45,23 @@
         <div class="logo"><i class="fas fa-network-wired"></i> Acher SISR</div>
         <div class="menu-toggle" id="mobileMenuBtn"><i class="fas fa-bars"></i></div>
         <ul class="nav-links" id="navLinks">
-            <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#a-propos">À propos</a></li>
-            <li><a href="#competences">Compétences</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#accueil" data-i18n="nav.home">Accueil</a></li>
+            <li><a href="#a-propos" data-i18n="nav.about">À propos</a></li>
+            <li><a href="#competences" data-i18n="nav.skills">Compétences</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+
+            <!-- ===== SÉLECTEUR DE LANGUE ===== -->
+            <li class="lang-selector">
+                <button id="langBtn" class="lang-btn" type="button">
+                    <i class="fas fa-globe"></i>
+                    <span id="currentLangLabel">FR</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <ul class="lang-menu" id="langMenu">
+                    <li class="lang-option" data-lang="fr">🇫🇷 Français</li>
+                    <li class="lang-option" data-lang="en">🇬🇧 English</li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>
@@ -57,29 +70,29 @@
 <section id="accueil" class="hero">
     <div class="container hero-content">
         <div class="hero-text fade-up">
-            <span class="badge"><i class="fas fa-shield-hooded"></i> BTS SIO SISR</span>
-            <h1>Acher <span class="highlight">Administrateur</span><br>
+            <span class="badge"><i class="fas fa-shield-hooded"></i> <span data-i18n="hero.badge">BTS SIO SISR</span></span>
+            <h1>Acher <span class="highlight" data-i18n="hero.title2">Administrateur</span><br>
                 <span class="typing-text" id="typingText"></span>
             </h1>
-            <p>Passionné par l'infrastructure IT, la virtualisation et la cybersécurité. Je transforme la complexité technique en solutions robustes.</p>
+            <p data-i18n="hero.desc">Passionné par l'infrastructure IT, la virtualisation et la cybersécurité. Je transforme la complexité technique en solutions robustes.</p>
             <div class="btn-group">
-                <a href="#competences" class="btn btn-primary"><i class="fas fa-folder-open"></i> Voir mes compétences</a>
-                <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Me contacter</a>
+                <a href="#competences" class="btn btn-primary"><i class="fas fa-folder-open"></i> <span data-i18n="hero.btn.skills">Voir mes compétences</span></a>
+                <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> <span data-i18n="hero.btn.contact">Me contacter</span></a>
             </div>
         </div>
         <div class="hero-image fade-up">
             <div class="terminal-card">
                 <p>┌─[acher@portfolio:~]</p>
                 <p>├───$ whoami</p>
-                <p>│   Administrateur systèmes & réseaux</p>
+                <p data-i18n="hero.term.role">│   Administrateur systèmes & réseaux</p>
                 <p>├───$ ls -la competences/</p>
-                <p>│   📁 Réseaux</p>
-                <p>│   📁 Systèmes</p>
-                <p>│   📁 Cybersécurité</p>
-                <p>│   📁 Support IT</p>
-                <p>│   📁 Stage</p>
-                <p>│   📁 Certifications</p>
-                <p>│   📁 Fiche</p>
+                <p data-i18n="hero.term.networks">│   📁 Réseaux</p>
+                <p data-i18n="hero.term.systems">│   📁 Systèmes</p>
+                <p data-i18n="hero.term.cyber">│   📁 Cybersécurité</p>
+                <p data-i18n="hero.term.support">│   📁 Support IT</p>
+                <p data-i18n="hero.term.stage">│   📁 Stage</p>
+                <p data-i18n="hero.term.certifs">│   📁 Certifications</p>
+                <p data-i18n="hero.term.sheet">│   📁 Fiche</p>
                 <p>└───$</p>
             </div>
         </div>
@@ -89,46 +102,46 @@
 <!-- ===== À PROPOS ===== -->
 <section id="a-propos">
     <div class="container">
-        <h2 class="section-title fade-up"><i class="fas fa-user-astronaut"></i> À propos</h2>
+        <h2 class="section-title fade-up"><i class="fas fa-user-astronaut"></i> <span data-i18n="about.title">À propos</span></h2>
         <div class="about-content fade-up tilt-card">
             <div class="about-text">
                 <p style="font-size: 1.2rem;">
-                    Étudiant en <strong>BTS SIO SISR</strong>, je transforme mes connaissances en solutions concrètes dans les domaines des réseaux, des systèmes et de la cybersécurité.
+                    <span data-i18n="about.p1">Étudiant en</span> <strong>BTS SIO SISR</strong><span data-i18n="about.p1b">, je transforme mes connaissances en solutions concrètes dans les domaines des réseaux, des systèmes et de la cybersécurité.</span>
                 </p>
                 <br>
-                <p>Depuis mon plus jeune âge, je suis fasciné par l'informatique et les nouvelles technologies. J'aime comprendre le fonctionnement des systèmes, explorer les réseaux et résoudre des problèmes techniques.</p>
+                <p data-i18n="about.p2">Depuis mon plus jeune âge, je suis fasciné par l'informatique et les nouvelles technologies. J'aime comprendre le fonctionnement des systèmes, explorer les réseaux et résoudre des problèmes techniques.</p>
             </div>
 
             <div class="stats-grid">
                 <div class="stat-item">
                     <span class="stat-number" data-target="2">0</span>
-                    <span class="stat-label">Années d'études</span>
+                    <span class="stat-label" data-i18n="about.stat.years">Années d'études</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" data-target="5">0</span>
-                    <span class="stat-label">Projets réalisés</span>
+                    <span class="stat-label" data-i18n="about.stat.projects">Projets réalisés</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" data-target="4">0</span>
-                    <span class="stat-label">Compétences maîtrisées</span>
+                    <span class="stat-label" data-i18n="about.stat.skills">Compétences maîtrisées</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" data-target="100">0</span>
-                    <span class="stat-label">% de passion</span>
+                    <span class="stat-label" data-i18n="about.stat.passion">% de passion</span>
                 </div>
             </div>
 
             <div class="cv-button-container">
                 <div class="button-group-about">
                     <a href="#" class="btn-cv" onclick="openPDF('image/cv_bien.pdf'); return false;">
-                        <i class="fas fa-file-alt"></i> Voir mon CV complet
+                        <i class="fas fa-file-alt"></i> <span data-i18n="about.btn.cv">Voir mon CV complet</span>
                     </a>
                     <a href="#" class="btn-rapport" onclick="openPDF('image/rapport.pdf'); return false;">
-                        <i class="fas fa-file-pdf"></i> 📄 Lire mon rapport de stage
+                        <i class="fas fa-file-pdf"></i> <span data-i18n="about.btn.report">📄 Lire mon rapport de stage</span>
                     </a>
                 </div>
                 <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--secondary);">
-                    <i class="fas fa-eye"></i> Les documents s'ouvrent dans un aperçu intégré
+                    <i class="fas fa-eye"></i> <span data-i18n="about.note">Les documents s'ouvrent dans un aperçu intégré</span>
                 </p>
             </div>
         </div>
@@ -138,7 +151,7 @@
 <!-- ===== COMPÉTENCES ===== -->
 <section id="competences">
     <div class="container">
-        <h2 class="section-title fade-up"><i class="fas fa-folder-tree"></i> Mes compétences</h2>
+        <h2 class="section-title fade-up"><i class="fas fa-folder-tree"></i> <span data-i18n="skills.title">Mes compétences</span></h2>
 
         <div class="file-explorer fade-up" id="fileExplorer">
             <div class="explorer-addressbar">
@@ -162,43 +175,43 @@
             <!-- ===== CONTENU DE L'EXPLORATEUR ===== -->
             <div class="explorer-content" id="explorerContent">
 
-                <!-- ===== VUE RACINE : LISTE DES DOSSIERS ===== -->
+                <!-- ===== VUE RACINE ===== -->
                 <div id="view-root" class="view-section active">
                     <div class="folder-grid">
                         <div class="folder-item" onclick="showFolder('reseaux')">
                             <div class="folder-icon folder-yellow"><i class="fas fa-folder"></i></div>
-                            <div class="folder-name">🌐 Réseaux</div>
-                            <div class="folder-info">3 éléments</div>
+                            <div class="folder-name" data-i18n="folder.networks">🌐 Réseaux</div>
+                            <div class="folder-info" data-i18n="folder.info.3">3 éléments</div>
                         </div>
                         <div class="folder-item" onclick="showFolder('systemes')">
                             <div class="folder-icon folder-blue"><i class="fas fa-folder"></i></div>
-                            <div class="folder-name">🖥️ Systèmes</div>
-                            <div class="folder-info">2 éléments</div>
+                            <div class="folder-name" data-i18n="folder.systems">🖥️ Systèmes</div>
+                            <div class="folder-info" data-i18n="folder.info.2">2 éléments</div>
                         </div>
                         <div class="folder-item" onclick="showFolder('cyber')">
                             <div class="folder-icon folder-green"><i class="fas fa-folder"></i></div>
-                            <div class="folder-name">🔐 Cybersécurité</div>
-                            <div class="folder-info">3 éléments</div>
+                            <div class="folder-name" data-i18n="folder.cyber">🔐 Cybersécurité</div>
+                            <div class="folder-info" data-i18n="folder.info.3">3 éléments</div>
                         </div>
                         <div class="folder-item" onclick="showFolder('support')">
                             <div class="folder-icon folder-red"><i class="fas fa-folder"></i></div>
-                            <div class="folder-name">🛠️ Support IT</div>
-                            <div class="folder-info">2 éléments</div>
+                            <div class="folder-name" data-i18n="folder.support">🛠️ Support IT</div>
+                            <div class="folder-info" data-i18n="folder.info.2">2 éléments</div>
                         </div>
                         <div class="folder-item" onclick="showFolder('stage')">
                             <div class="folder-icon folder-orange"><i class="fas fa-folder"></i></div>
-                            <div class="folder-name">📁 Stage</div>
-                            <div class="folder-info">2 sous-dossiers</div>
+                            <div class="folder-name" data-i18n="folder.stage">📁 Stage</div>
+                            <div class="folder-info" data-i18n="folder.info.2sub">2 sous-dossiers</div>
                         </div>
                         <div class="folder-item" onclick="showFolder('certifications')">
                             <div class="folder-icon folder-cyan"><i class="fas fa-folder"></i></div>
-                            <div class="folder-name">📁 Certifications</div>
-                            <div class="folder-info">1 élément</div>
+                            <div class="folder-name" data-i18n="folder.certifs">📁 Certifications</div>
+                            <div class="folder-info" data-i18n="folder.info.1">1 élément</div>
                         </div>
                         <div class="folder-item" onclick="showFolder('fiche')">
                             <div class="folder-icon folder-pink"><i class="fas fa-folder"></i></div>
-                            <div class="folder-name">📄 Fiche</div>
-                            <div class="folder-info">1 élément</div>
+                            <div class="folder-name" data-i18n="folder.sheet">📄 Fiche</div>
+                            <div class="folder-info" data-i18n="folder.info.1">1 élément</div>
                         </div>
                     </div>
                 </div>
@@ -208,18 +221,18 @@
                     <div class="folder-grid projects-grid">
                         <div class="folder-item project-item" onclick="showProject('projet-hsrp')">
                             <div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>
-                            <div class="folder-name">Routage inter-VLAN HSRP</div>
-                            <div class="folder-info">HSRP • VLAN • Routage</div>
+                            <div class="folder-name" data-i18n="project.hsrp.title">Routage inter-VLAN HSRP</div>
+                            <div class="folder-info" data-i18n="project.hsrp.info">HSRP • VLAN • Routage</div>
                         </div>
                         <div class="folder-item project-item" onclick="showProject('projet-vlan')">
                             <div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>
-                            <div class="folder-name">Segmentation VLAN et ACL</div>
-                            <div class="folder-info">VLAN • ACL • Sécurité</div>
+                            <div class="folder-name" data-i18n="project.vlan.title">Segmentation VLAN et ACL</div>
+                            <div class="folder-info" data-i18n="project.vlan.info">VLAN • ACL • Sécurité</div>
                         </div>
                         <div class="folder-item project-item" onclick="showProject('projet-nat')">
                             <div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>
-                            <div class="folder-name">NAT et PAT - Accès Internet</div>
-                            <div class="folder-info">NAT • PAT • Cisco</div>
+                            <div class="folder-name" data-i18n="project.nat.title">NAT et PAT - Accès Internet</div>
+                            <div class="folder-info" data-i18n="project.nat.info">NAT • PAT • Cisco</div>
                         </div>
                     </div>
                 </div>
@@ -229,13 +242,13 @@
                     <div class="folder-grid projects-grid">
                         <div class="folder-item project-item" onclick="showProject('projet-winserver')">
                             <div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>
-                            <div class="folder-name">Infrastructure Windows Server</div>
-                            <div class="folder-info">AD DS • DHCP • DNS</div>
+                            <div class="folder-name" data-i18n="project.winserver.title">Infrastructure Windows Server</div>
+                            <div class="folder-info" data-i18n="project.winserver.info">AD DS • DHCP • DNS</div>
                         </div>
                         <div class="folder-item project-item" onclick="showProject('projet-debian')">
                             <div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>
-                            <div class="folder-name">Administration Linux Debian</div>
-                            <div class="folder-info">Linux • Debian • Apache</div>
+                            <div class="folder-name" data-i18n="project.debian.title">Administration Linux Debian</div>
+                            <div class="folder-info" data-i18n="project.debian.info">Linux • Debian • Apache</div>
                         </div>
                     </div>
                 </div>
@@ -245,18 +258,18 @@
                     <div class="folder-grid projects-grid">
                         <div class="folder-item project-item" onclick="showProject('projet-firewall')">
                             <div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>
-                            <div class="folder-name">Sécurisation Pare-feu</div>
-                            <div class="folder-info">Firewall • Iptables</div>
+                            <div class="folder-name" data-i18n="project.firewall.title">Sécurisation Pare-feu</div>
+                            <div class="folder-info" data-i18n="project.firewall.info">Firewall • Iptables</div>
                         </div>
                         <div class="folder-item project-item" onclick="showProject('projet-audit')">
                             <div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>
-                            <div class="folder-name">Audit de sécurité</div>
-                            <div class="folder-info">Audit • Vulnérabilité</div>
+                            <div class="folder-name" data-i18n="project.audit.title">Audit de sécurité</div>
+                            <div class="folder-info" data-i18n="project.audit.info">Audit • Vulnérabilité</div>
                         </div>
                         <div class="folder-item project-item" onclick="showProject('projet-hardening')">
                             <div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>
-                            <div class="folder-name">Hardening Linux</div>
-                            <div class="folder-info">Linux • Hardening</div>
+                            <div class="folder-name" data-i18n="project.hardening.title">Hardening Linux</div>
+                            <div class="folder-info" data-i18n="project.hardening.info">Linux • Hardening</div>
                         </div>
                     </div>
                 </div>
@@ -266,13 +279,13 @@
                     <div class="folder-grid projects-grid">
                         <div class="folder-item project-item" onclick="showProject('projet-win11')">
                             <div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>
-                            <div class="folder-name">Déploiement Windows 11</div>
-                            <div class="folder-info">Windows 11 • MDT</div>
+                            <div class="folder-name" data-i18n="project.win11.title">Déploiement Windows 11</div>
+                            <div class="folder-info" data-i18n="project.win11.info">Windows 11 • MDT</div>
                         </div>
                         <div class="folder-item project-item" onclick="showProject('projet-maintenance')">
                             <div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>
-                            <div class="folder-name">Maintenance et Diagnostic</div>
-                            <div class="folder-info">Maintenance • Diagnostic</div>
+                            <div class="folder-name" data-i18n="project.maintenance.title">Maintenance et Diagnostic</div>
+                            <div class="folder-info" data-i18n="project.maintenance.info">Maintenance • Diagnostic</div>
                         </div>
                     </div>
                 </div>
@@ -282,103 +295,103 @@
                     <div class="folder-grid">
                         <div class="folder-item" onclick="showFolder('stage1')">
                             <div class="folder-icon folder-purple"><i class="fas fa-folder"></i></div>
-                            <div class="folder-name">📁 1ère année</div>
-                            <div class="folder-info">2 éléments</div>
+                            <div class="folder-name" data-i18n="folder.year1">📁 1ère année</div>
+                            <div class="folder-info" data-i18n="folder.info.2">2 éléments</div>
                         </div>
                         <div class="folder-item" onclick="showFolder('stage2')">
                             <div class="folder-icon folder-purple"><i class="fas fa-folder"></i></div>
-                            <div class="folder-name">📁 2ème année</div>
-                            <div class="folder-info">3 éléments</div>
+                            <div class="folder-name" data-i18n="folder.year2">📁 2ème année</div>
+                            <div class="folder-info" data-i18n="folder.info.3">3 éléments</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- ===== STAGE 1ÈRE ANNÉE ===== -->
+                <!-- ===== STAGE 1 ===== -->
                 <div id="view-stage1" class="view-section">
                     <div class="folder-grid projects-grid">
                         <div class="folder-item project-item" onclick="showProject('projet-stage1')">
                             <div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>
-                            <div class="folder-name">Stage 1ère année - Découverte</div>
-                            <div class="folder-info">Migration • Rufus</div>
+                            <div class="folder-name" data-i18n="project.stage1.title">Stage 1ère année - Découverte</div>
+                            <div class="folder-info" data-i18n="project.stage1.info">Migration • Rufus</div>
                         </div>
                         <div class="folder-item project-item" onclick="showProject('projet-install-poste')">
                             <div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>
-                            <div class="folder-name">Projet - Installation postes</div>
-                            <div class="folder-info">Windows 11 • Installation</div>
+                            <div class="folder-name" data-i18n="project.install.title">Projet - Installation postes</div>
+                            <div class="folder-info" data-i18n="project.install.info">Windows 11 • Installation</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- ===== STAGE 2ÈME ANNÉE ===== -->
+                <!-- ===== STAGE 2 ===== -->
                 <div id="view-stage2" class="view-section">
                     <div class="folder-grid projects-grid">
                         <div class="folder-item project-item" onclick="showProject('projet-stage2')">
                             <div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>
-                            <div class="folder-name">Stage 2ème année - Administration</div>
-                            <div class="folder-info">Administration • Serveurs</div>
+                            <div class="folder-name" data-i18n="project.stage2.title">Stage 2ème année - Administration</div>
+                            <div class="folder-info" data-i18n="project.stage2.info">Administration • Serveurs</div>
                         </div>
                         <div class="folder-item project-item" onclick="showProject('projet-migration')">
                             <div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>
-                            <div class="folder-name">Projet - Migration serveur</div>
-                            <div class="folder-info">Migration • VMware</div>
+                            <div class="folder-name" data-i18n="project.migration.title">Projet - Migration serveur</div>
+                            <div class="folder-info" data-i18n="project.migration.info">Migration • VMware</div>
                         </div>
                         <div class="folder-item project-item" onclick="showProject('projet-backup')">
                             <div class="folder-icon" style="color: #3b82f6; font-size: 4rem;">📄</div>
-                            <div class="folder-name">Serveur de sauvegarde</div>
-                            <div class="folder-info">Sauvegarde • Veeam</div>
+                            <div class="folder-name" data-i18n="project.backup.title">Serveur de sauvegarde</div>
+                            <div class="folder-info" data-i18n="project.backup.info">Sauvegarde • Veeam</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- ===== DOSSIER CERTIFICATIONS ===== -->
+                <!-- ===== CERTIFICATIONS ===== -->
                 <div id="view-certifications" class="view-section">
                     <div class="folder-grid projects-grid">
                         <div class="folder-item project-item" onclick="showProject('projet-rgpd')">
                             <img src="image/certif.png" alt="Certification RGPD" class="project-thumbnail">
-                            <div class="folder-name">Certification L'ATELIER RGPD</div>
-                            <div class="folder-info">RGPD • Cybersécurité</div>
+                            <div class="folder-name" data-i18n="project.rgpd.title">Certification L'ATELIER RGPD</div>
+                            <div class="folder-info" data-i18n="project.rgpd.info">RGPD • Cybersécurité</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- ===== DOSSIER FICHE ===== -->
+                <!-- ===== FICHE ===== -->
                 <div id="view-fiche" class="view-section">
                     <div class="folder-grid projects-grid">
                         <div class="folder-item project-item" onclick="showProject('projet-fiche')">
                             <div class="folder-icon" style="color: #ec4899; font-size: 4rem;">📄</div>
-                            <div class="folder-name">Ma Fiche</div>
-                            <div class="folder-info">PDF • Document</div>
+                            <div class="folder-name" data-i18n="project.fiche.title">Ma Fiche</div>
+                            <div class="folder-info" data-i18n="project.fiche.info">PDF • Document</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- ===== PROJET : ROUTAGE HSRP ===== -->
+                <!-- ===== PROJET : HSRP ===== -->
                 <div id="view-projet-hsrp" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 Routage inter-VLAN HSRP</h2>
+                            <h2 data-i18n="project.hsrp.h2">📄 Routage inter-VLAN HSRP</h2>
                             <div class="project-tags">
                                 <span>HSRP</span><span>VLAN</span><span>Routage</span><span>Cisco</span>
                             </div>
                         </div>
-                        <div class="project-desc">Mise en place d'un routage inter-VLAN avec HSRP (Hot Standby Router Protocol) pour assurer la redondance et la haute disponibilité du réseau.</div>
+                        <div class="project-desc" data-i18n="project.hsrp.desc">Mise en place d'un routage inter-VLAN avec HSRP (Hot Standby Router Protocol) pour assurer la redondance et la haute disponibilité du réseau.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-image"></i> Preuve / Capture d'écran</h3>
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof">Preuve / Capture d'écran</span></h3>
                             <div class="project-images">
                                 <img src="image/topologie-vlan.png" alt="Topologie VLAN" onclick="window.open('image/topologie-vlan.png', '_blank')">
                                 <img src="image/routage-vlan.png" alt="Routage VLAN" onclick="window.open('image/routage-vlan.png', '_blank')">
                             </div>
                         </div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
                             <div class="project-files">
-                                <a href="#" onclick="openPDF('image/hsrp-config.pdf'); return false;"><i class="fas fa-file-pdf"></i> Configuration HSRP</a>
-                                <a href="image/topologie-vlan.png" target="_blank"><i class="fas fa-file-image"></i> Topologie complète</a>
+                                <a href="#" onclick="openPDF('image/hsrp-config.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.hsrp.file1">Configuration HSRP</span></a>
+                                <a href="image/topologie-vlan.png" target="_blank"><i class="fas fa-file-image"></i> <span data-i18n="project.hsrp.file2">Topologie complète</span></a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('reseaux')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
@@ -388,29 +401,29 @@
                 <div id="view-projet-vlan" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 Segmentation VLAN et ACL</h2>
+                            <h2 data-i18n="project.vlan.h2">📄 Segmentation VLAN et ACL</h2>
                             <div class="project-tags">
                                 <span>VLAN</span><span>ACL</span><span>Sécurité</span><span>Cisco</span>
                             </div>
                         </div>
-                        <div class="project-desc">Conception d'une architecture VLAN sécurisée avec des ACL (Access Control Lists) pour contrôler les flux entre les différents services.</div>
+                        <div class="project-desc" data-i18n="project.vlan.desc">Conception d'une architecture VLAN sécurisée avec des ACL (Access Control Lists) pour contrôler les flux entre les différents services.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-image"></i> Preuve / Capture d'écran</h3>
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof">Preuve / Capture d'écran</span></h3>
                             <div class="project-images">
                                 <img src="image/vlan-topologie.png" alt="Topologie VLAN" onclick="window.open('image/vlan-topologie.png', '_blank')">
                                 <img src="image/acl-config.png" alt="ACL Config" onclick="window.open('image/acl-config.png', '_blank')">
                             </div>
                         </div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
                             <div class="project-files">
-                                <a href="#" onclick="openPDF('image/vlan-config.pdf'); return false;"><i class="fas fa-file-pdf"></i> Configuration VLAN</a>
-                                <a href="#" onclick="openPDF('image/acl-rules.pdf'); return false;"><i class="fas fa-file-pdf"></i> Règles ACL</a>
+                                <a href="#" onclick="openPDF('image/vlan-config.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.vlan.file1">Configuration VLAN</span></a>
+                                <a href="#" onclick="openPDF('image/acl-rules.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.vlan.file2">Règles ACL</span></a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('reseaux')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
@@ -420,29 +433,29 @@
                 <div id="view-projet-nat" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 NAT et PAT - Accès Internet</h2>
+                            <h2 data-i18n="project.nat.h2">📄 NAT et PAT - Accès Internet</h2>
                             <div class="project-tags">
                                 <span>NAT</span><span>PAT</span><span>Cisco</span><span>Réseau</span>
                             </div>
                         </div>
-                        <div class="project-desc">Configuration NAT (Network Address Translation) et PAT (Port Address Translation) pour permettre l'accès à Internet depuis un réseau privé.</div>
+                        <div class="project-desc" data-i18n="project.nat.desc">Configuration NAT (Network Address Translation) et PAT (Port Address Translation) pour permettre l'accès à Internet depuis un réseau privé.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-image"></i> Preuve / Capture d'écran</h3>
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof">Preuve / Capture d'écran</span></h3>
                             <div class="project-images">
                                 <img src="image/nat-config.png" alt="NAT Config" onclick="window.open('image/nat-config.png', '_blank')">
                                 <img src="image/pat-config.png" alt="PAT Config" onclick="window.open('image/pat-config.png', '_blank')">
                             </div>
                         </div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
                             <div class="project-files">
-                                <a href="#" onclick="openPDF('image/nat-config.pdf'); return false;"><i class="fas fa-file-pdf"></i> Configuration NAT</a>
-                                <a href="image/nat.pkt" target="_blank"><i class="fas fa-file-archive"></i> Fichier Packet Tracer</a>
+                                <a href="#" onclick="openPDF('image/nat-config.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.nat.file1">Configuration NAT</span></a>
+                                <a href="image/nat.pkt" target="_blank"><i class="fas fa-file-archive"></i> <span data-i18n="project.nat.file2">Fichier Packet Tracer</span></a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('reseaux')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
@@ -452,29 +465,29 @@
                 <div id="view-projet-winserver" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 Infrastructure Windows Server</h2>
+                            <h2 data-i18n="project.winserver.h2">📄 Infrastructure Windows Server</h2>
                             <div class="project-tags">
                                 <span>Windows Server</span><span>AD DS</span><span>DHCP</span><span>DNS</span>
                             </div>
                         </div>
-                        <div class="project-desc">Déploiement complet d'un domaine Active Directory avec services DHCP, DNS et GPO pour une gestion centralisée des utilisateurs.</div>
+                        <div class="project-desc" data-i18n="project.winserver.desc">Déploiement complet d'un domaine Active Directory avec services DHCP, DNS et GPO pour une gestion centralisée des utilisateurs.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-image"></i> Preuve / Capture d'écran</h3>
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof">Preuve / Capture d'écran</span></h3>
                             <div class="project-images">
                                 <img src="image/win-server-install.png" alt="Install" onclick="window.open('image/win-server-install.png', '_blank')">
                                 <img src="image/ad-ds-config.png" alt="AD DS" onclick="window.open('image/ad-ds-config.png', '_blank')">
                             </div>
                         </div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
                             <div class="project-files">
-                                <a href="#" onclick="openPDF('image/win-server-guide.pdf'); return false;"><i class="fas fa-file-pdf"></i> Guide d'installation</a>
-                                <a href="#" onclick="openPDF('image/ad-ds-config.pdf'); return false;"><i class="fas fa-file-pdf"></i> Configuration AD DS</a>
+                                <a href="#" onclick="openPDF('image/win-server-guide.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.winserver.file1">Guide d'installation</span></a>
+                                <a href="#" onclick="openPDF('image/ad-ds-config.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.winserver.file2">Configuration AD DS</span></a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('systemes')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
@@ -484,27 +497,27 @@
                 <div id="view-projet-debian" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 Administration Linux Debian</h2>
+                            <h2 data-i18n="project.debian.h2">📄 Administration Linux Debian</h2>
                             <div class="project-tags">
                                 <span>Linux</span><span>Debian</span><span>Apache</span><span>MySQL</span>
                             </div>
                         </div>
-                        <div class="project-desc">Configuration d'un serveur Debian avec services web (Apache/Nginx), base de données (MySQL) et gestion des utilisateurs.</div>
+                        <div class="project-desc" data-i18n="project.debian.desc">Configuration d'un serveur Debian avec services web (Apache/Nginx), base de données (MySQL) et gestion des utilisateurs.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-image"></i> Preuve / Capture d'écran</h3>
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof">Preuve / Capture d'écran</span></h3>
                             <div class="project-images">
                                 <img src="image/debian-server.png" alt="Debian" onclick="window.open('image/debian-server.png', '_blank')">
                             </div>
                         </div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
                             <div class="project-files">
-                                <a href="#" onclick="openPDF('image/debian-config.pdf'); return false;"><i class="fas fa-file-pdf"></i> Configuration Debian</a>
+                                <a href="#" onclick="openPDF('image/debian-config.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.debian.file1">Configuration Debian</span></a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('systemes')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
@@ -514,27 +527,27 @@
                 <div id="view-projet-firewall" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 Sécurisation Pare-feu</h2>
+                            <h2 data-i18n="project.firewall.h2">📄 Sécurisation Pare-feu</h2>
                             <div class="project-tags">
                                 <span>Firewall</span><span>Iptables</span><span>Sécurité</span>
                             </div>
                         </div>
-                        <div class="project-desc">Mise en place de règles de pare-feu pour protéger le réseau contre les attaques extérieures et contrôler les flux entrants/sortants.</div>
+                        <div class="project-desc" data-i18n="project.firewall.desc">Mise en place de règles de pare-feu pour protéger le réseau contre les attaques extérieures et contrôler les flux entrants/sortants.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-image"></i> Preuve / Capture d'écran</h3>
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof">Preuve / Capture d'écran</span></h3>
                             <div class="project-images">
                                 <img src="image/firewall-rules.png" alt="Firewall" onclick="window.open('image/firewall-rules.png', '_blank')">
                             </div>
                         </div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
                             <div class="project-files">
-                                <a href="#" onclick="openPDF('image/firewall-rules.pdf'); return false;"><i class="fas fa-file-pdf"></i> Règles Firewall</a>
+                                <a href="#" onclick="openPDF('image/firewall-rules.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.firewall.file1">Règles Firewall</span></a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('cyber')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
@@ -544,27 +557,27 @@
                 <div id="view-projet-audit" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 Audit de sécurité</h2>
+                            <h2 data-i18n="project.audit.h2">📄 Audit de sécurité</h2>
                             <div class="project-tags">
                                 <span>Audit</span><span>Vulnérabilité</span><span>Hardening</span>
                             </div>
                         </div>
-                        <div class="project-desc">Réalisation d'un audit complet pour identifier les vulnérabilités et proposer des solutions de renforcement.</div>
+                        <div class="project-desc" data-i18n="project.audit.desc">Réalisation d'un audit complet pour identifier les vulnérabilités et proposer des solutions de renforcement.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-image"></i> Preuve / Capture d'écran</h3>
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof">Preuve / Capture d'écran</span></h3>
                             <div class="project-images">
                                 <img src="image/security-audit.png" alt="Audit" onclick="window.open('image/security-audit.png', '_blank')">
                             </div>
                         </div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
                             <div class="project-files">
-                                <a href="#" onclick="openPDF('image/security-audit.pdf'); return false;"><i class="fas fa-file-pdf"></i> Rapport d'audit</a>
+                                <a href="#" onclick="openPDF('image/security-audit.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.audit.file1">Rapport d'audit</span></a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('cyber')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
@@ -574,27 +587,27 @@
                 <div id="view-projet-hardening" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 Hardening Linux</h2>
+                            <h2 data-i18n="project.hardening.h2">📄 Hardening Linux</h2>
                             <div class="project-tags">
                                 <span>Linux</span><span>Hardening</span><span>Sécurité</span>
                             </div>
                         </div>
-                        <div class="project-desc">Durcissement d'un serveur Linux : configuration sécurisée, suppression des services inutiles, gestion des accès.</div>
+                        <div class="project-desc" data-i18n="project.hardening.desc">Durcissement d'un serveur Linux : configuration sécurisée, suppression des services inutiles, gestion des accès.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-image"></i> Preuve / Capture d'écran</h3>
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof">Preuve / Capture d'écran</span></h3>
                             <div class="project-images">
                                 <img src="image/hardening-linux.png" alt="Hardening" onclick="window.open('image/hardening-linux.png', '_blank')">
                             </div>
                         </div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
                             <div class="project-files">
-                                <a href="image/hardening-linux.txt" target="_blank"><i class="fas fa-file-alt"></i> Script de durcissement</a>
+                                <a href="image/hardening-linux.txt" target="_blank"><i class="fas fa-file-alt"></i> <span data-i18n="project.hardening.file1">Script de durcissement</span></a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('cyber')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
@@ -604,27 +617,27 @@
                 <div id="view-projet-win11" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 Déploiement Windows 11</h2>
+                            <h2 data-i18n="project.win11.h2">📄 Déploiement Windows 11</h2>
                             <div class="project-tags">
                                 <span>Windows 11</span><span>Déploiement</span><span>MDT</span>
                             </div>
                         </div>
-                        <div class="project-desc">Déploiement automatisé de postes Windows 11 avec configuration des mises à jour, sécurisation et optimisation.</div>
+                        <div class="project-desc" data-i18n="project.win11.desc">Déploiement automatisé de postes Windows 11 avec configuration des mises à jour, sécurisation et optimisation.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-image"></i> Preuve / Capture d'écran</h3>
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof">Preuve / Capture d'écran</span></h3>
                             <div class="project-images">
                                 <img src="image/win11-deploy.png" alt="Win11" onclick="window.open('image/win11-deploy.png', '_blank')">
                             </div>
                         </div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
                             <div class="project-files">
-                                <a href="image/windows11.docx" target="_blank"><i class="fas fa-file-word"></i> Guide de déploiement</a>
+                                <a href="image/windows11.docx" target="_blank"><i class="fas fa-file-word"></i> <span data-i18n="project.win11.file1">Guide de déploiement</span></a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('support')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
@@ -634,27 +647,27 @@
                 <div id="view-projet-maintenance" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 Maintenance et Diagnostic</h2>
+                            <h2 data-i18n="project.maintenance.h2">📄 Maintenance et Diagnostic</h2>
                             <div class="project-tags">
                                 <span>Maintenance</span><span>Diagnostic</span><span>Support</span>
                             </div>
                         </div>
-                        <div class="project-desc">Procédures de maintenance préventive et curative, diagnostic matériel et logiciel, résolution de problèmes.</div>
+                        <div class="project-desc" data-i18n="project.maintenance.desc">Procédures de maintenance préventive et curative, diagnostic matériel et logiciel, résolution de problèmes.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-image"></i> Preuve / Capture d'écran</h3>
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof">Preuve / Capture d'écran</span></h3>
                             <div class="project-images">
                                 <img src="image/diagnostic.png" alt="Diagnostic" onclick="window.open('image/diagnostic.png', '_blank')">
                             </div>
                         </div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
                             <div class="project-files">
-                                <a href="image/maintenance.ps1" target="_blank"><i class="fas fa-file-code"></i> Script de maintenance</a>
+                                <a href="image/maintenance.ps1" target="_blank"><i class="fas fa-file-code"></i> <span data-i18n="project.maintenance.file1">Script de maintenance</span></a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('support')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
@@ -664,31 +677,31 @@
                 <div id="view-projet-stage1" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 Stage 1ère année - Découverte</h2>
+                            <h2 data-i18n="project.stage1.h2">📄 Stage 1ère année - Découverte</h2>
                             <div class="project-tags">
                                 <span>Découverte</span><span>Migration</span><span>Rufus</span><span>Clé USB</span>
                             </div>
                         </div>
-                        <div class="project-desc">Migration de postes de travail de Windows 10 vers Windows 11 dans le cadre de mes études. Utilisation de Rufus pour créer une clé USB bootable, installation et configuration des postes pour les besoins pédagogiques du BTS SIO. Optimisation des performances et sécurisation des systèmes.</div>
+                        <div class="project-desc" data-i18n="project.stage1.desc">Migration de postes de travail de Windows 10 vers Windows 11 dans le cadre de mes études. Utilisation de Rufus pour créer une clé USB bootable, installation et configuration des postes pour les besoins pédagogiques du BTS SIO. Optimisation des performances et sécurisation des systèmes.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-image"></i> Preuve / Capture d'écran</h3>
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof">Preuve / Capture d'écran</span></h3>
                             <div class="project-images">
                                 <img src="image/premiere.jpg" alt="Stage 1" onclick="window.open('image/premiere.jpg', '_blank')">
                                 <img src="image/deuxieme.png" alt="Stage 2" onclick="window.open('image/deuxieme.png', '_blank')">
                             </div>
                         </div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
                             <div class="project-files">
-                                <a href="#" onclick="openPDF('image/rapport-stage1.pdf'); return false;"><i class="fas fa-file-pdf"></i> Rapport de stage 1ère année</a>
-                                <a href="#" onclick="openPDF('image/rapport.pdf'); return false;"><i class="fas fa-file-pdf"></i> Rapport de stage</a>
-                                <a href="image/soutenance1.pptx" target="_blank"><i class="fas fa-file-powerpoint"></i> Présentation soutenance</a>
-                                <a href="#" onclick="openPDF('image/windows11.pdf'); return false;"><i class="fas fa-file-pdf"></i> Installation Windows 11</a>
+                                <a href="#" onclick="openPDF('image/rapport-stage1.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.stage1.file1">Rapport de stage 1ère année</span></a>
+                                <a href="#" onclick="openPDF('image/rapport.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.stage1.file2">Rapport de stage</span></a>
+                                <a href="image/soutenance1.pptx" target="_blank"><i class="fas fa-file-powerpoint"></i> <span data-i18n="project.stage1.file3">Présentation soutenance</span></a>
+                                <a href="#" onclick="openPDF('image/windows11.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.stage1.file4">Installation Windows 11</span></a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('stage1')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
@@ -698,29 +711,29 @@
                 <div id="view-projet-install-poste" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 Projet - Installation postes de travail</h2>
+                            <h2 data-i18n="project.install.h2">📄 Projet - Installation postes de travail</h2>
                             <div class="project-tags">
                                 <span>Windows 11</span><span>Installation</span><span>Postes de travail</span>
                             </div>
                         </div>
-                        <div class="project-desc">Installation et configuration de postes de travail dans le cadre des travaux pratiques du BTS SIO.</div>
+                        <div class="project-desc" data-i18n="project.install.desc">Installation et configuration de postes de travail dans le cadre des travaux pratiques du BTS SIO.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-image"></i> Preuve / Capture d'écran</h3>
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof">Preuve / Capture d'écran</span></h3>
                             <div class="project-images">
                                 <img src="image/install-poste1.png" alt="Install 1" onclick="window.open('image/install-poste1.png', '_blank')">
                                 <img src="image/install-poste2.png" alt="Install 2" onclick="window.open('image/install-poste2.png', '_blank')">
                             </div>
                         </div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
                             <div class="project-files">
-                                <a href="#" onclick="openPDF('image/windows11.pdf'); return false;"><i class="fas fa-file-pdf"></i> Procédure d'installation</a>
-                                <a href="image/checklist.docx" target="_blank"><i class="fas fa-file-word"></i> Checklist déploiement</a>
+                                <a href="#" onclick="openPDF('image/windows11.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.install.file1">Procédure d'installation</span></a>
+                                <a href="image/checklist.docx" target="_blank"><i class="fas fa-file-word"></i> <span data-i18n="project.install.file2">Checklist déploiement</span></a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('stage1')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
@@ -730,61 +743,61 @@
                 <div id="view-projet-stage2" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 Stage 2ème année - Administration</h2>
+                            <h2 data-i18n="project.stage2.h2">📄 Stage 2ème année - Administration</h2>
                             <div class="project-tags">
                                 <span>Administration</span><span>Serveurs</span><span>Infrastructure</span>
                             </div>
                         </div>
-                        <div class="project-desc">Stage en administration systèmes et réseaux. Gestion des serveurs, déploiement d'infrastructures et mise en place de solutions de sauvegarde.</div>
+                        <div class="project-desc" data-i18n="project.stage2.desc">Stage en administration systèmes et réseaux. Gestion des serveurs, déploiement d'infrastructures et mise en place de solutions de sauvegarde.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-image"></i> Preuve / Capture d'écran</h3>
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof">Preuve / Capture d'écran</span></h3>
                             <div class="project-images">
                                 <img src="image/stage2-1.png" alt="Stage 2.1" onclick="window.open('image/stage2-1.png', '_blank')">
                                 <img src="image/stage2-2.png" alt="Stage 2.2" onclick="window.open('image/stage2-2.png', '_blank')">
                             </div>
                         </div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
                             <div class="project-files">
-                                <a href="#" onclick="openPDF('image/rapport-stage2.pdf'); return false;"><i class="fas fa-file-pdf"></i> Rapport de stage 2ème année</a>
-                                <a href="image/soutenance2.pptx" target="_blank"><i class="fas fa-file-powerpoint"></i> Présentation soutenance</a>
+                                <a href="#" onclick="openPDF('image/rapport-stage2.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.stage2.file1">Rapport de stage 2ème année</span></a>
+                                <a href="image/soutenance2.pptx" target="_blank"><i class="fas fa-file-powerpoint"></i> <span data-i18n="project.stage2.file2">Présentation soutenance</span></a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('stage2')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- ===== PROJET : MIGRATION SERVEUR ===== -->
+                <!-- ===== PROJET : MIGRATION ===== -->
                 <div id="view-projet-migration" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 Projet - Migration serveur</h2>
+                            <h2 data-i18n="project.migration.h2">📄 Projet - Migration serveur</h2>
                             <div class="project-tags">
                                 <span>Migration</span><span>Virtualisation</span><span>VMware</span>
                             </div>
                         </div>
-                        <div class="project-desc">Migration d'un serveur physique vers une infrastructure virtualisée avec VMware ESXi. Planification, exécution et validation.</div>
+                        <div class="project-desc" data-i18n="project.migration.desc">Migration d'un serveur physique vers une infrastructure virtualisée avec VMware ESXi. Planification, exécution et validation.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-image"></i> Preuve / Capture d'écran</h3>
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof">Preuve / Capture d'écran</span></h3>
                             <div class="project-images">
                                 <img src="image/migration-server1.png" alt="Migration 1" onclick="window.open('image/migration-server1.png', '_blank')">
                                 <img src="image/migration-server2.png" alt="Migration 2" onclick="window.open('image/migration-server2.png', '_blank')">
                             </div>
                         </div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
                             <div class="project-files">
-                                <a href="#" onclick="openPDF('image/plan-migration.pdf'); return false;"><i class="fas fa-file-pdf"></i> Plan de migration</a>
-                                <a href="#" onclick="openPDF('image/doc-technique.pdf'); return false;"><i class="fas fa-file-pdf"></i> Documentation technique</a>
+                                <a href="#" onclick="openPDF('image/plan-migration.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.migration.file1">Plan de migration</span></a>
+                                <a href="#" onclick="openPDF('image/doc-technique.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.migration.file2">Documentation technique</span></a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('stage2')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
@@ -794,58 +807,58 @@
                 <div id="view-projet-backup" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 Mise en place d'un serveur de sauvegarde</h2>
+                            <h2 data-i18n="project.backup.h2">📄 Mise en place d'un serveur de sauvegarde</h2>
                             <div class="project-tags">
                                 <span>Sauvegarde</span><span>Veeam</span><span>Continuité</span>
                             </div>
                         </div>
-                        <div class="project-desc">Déploiement et configuration d'un serveur de sauvegarde avec Veeam Backup & Replication pour assurer la continuité d'activité.</div>
+                        <div class="project-desc" data-i18n="project.backup.desc">Déploiement et configuration d'un serveur de sauvegarde avec Veeam Backup & Replication pour assurer la continuité d'activité.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-image"></i> Preuve / Capture d'écran</h3>
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof">Preuve / Capture d'écran</span></h3>
                             <div class="project-images">
                                 <img src="image/backup-server.png" alt="Backup" onclick="window.open('image/backup-server.png', '_blank')">
                             </div>
                         </div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
                             <div class="project-files">
-                                <a href="#" onclick="openPDF('image/veeam-config.pdf'); return false;"><i class="fas fa-file-pdf"></i> Configuration Veeam</a>
-                                <a href="#" onclick="openPDF('image/pra.pdf'); return false;"><i class="fas fa-file-pdf"></i> Plan de reprise d'activité</a>
+                                <a href="#" onclick="openPDF('image/veeam-config.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.backup.file1">Configuration Veeam</span></a>
+                                <a href="#" onclick="openPDF('image/pra.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.backup.file2">Plan de reprise d'activité</span></a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('stage2')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- ===== PROJET : CERTIFICATION RGPD ===== -->
+                <!-- ===== PROJET : RGPD ===== -->
                 <div id="view-projet-rgpd" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 Certification L'ATELIER RGPD</h2>
+                            <h2 data-i18n="project.rgpd.h2">📄 Certification L'ATELIER RGPD</h2>
                             <div class="project-tags">
                                 <span>RGPD</span><span>Cybersécurité</span><span>Données Personnelles</span><span>Conformité</span>
                             </div>
                         </div>
-                        <div class="project-desc">Obtention de la certification L'ATELIER RGPD. Cette formation m'a permis d'acquérir les compétences nécessaires pour comprendre et appliquer le Règlement Général sur la Protection des Données (RGPD) au sein d'une organisation. J'ai appris à identifier les données personnelles, à mettre en place des mesures de sécurité adéquates, à gérer les consentements et à assurer la conformité des traitements de données.</div>
+                        <div class="project-desc" data-i18n="project.rgpd.desc">Obtention de la certification L'ATELIER RGPD. Cette formation m'a permis d'acquérir les compétences nécessaires pour comprendre et appliquer le Règlement Général sur la Protection des Données (RGPD) au sein d'une organisation. J'ai appris à identifier les données personnelles, à mettre en place des mesures de sécurité adéquates, à gérer les consentements et à assurer la conformité des traitements de données.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-image"></i> Preuve / Certificat</h3>
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof2">Preuve / Certificat</span></h3>
                             <div class="project-images">
                                 <img src="image/certif.png" alt="Certification RGPD" onclick="window.open('image/certif.png', '_blank')">
                             </div>
                         </div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-download"></i> Documents & fichiers</h3>
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
                             <div class="project-files">
-                                <a href="#" onclick="openPDF('image/certification-rgpd.pdf'); return false;"><i class="fas fa-file-pdf"></i> Certificat L'ATELIER RGPD</a>
+                                <a href="#" onclick="openPDF('image/certification-rgpd.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.rgpd.file1">Certificat L'ATELIER RGPD</span></a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('certifications')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
@@ -855,23 +868,23 @@
                 <div id="view-projet-fiche" class="view-section">
                     <div class="project-detail">
                         <div class="project-header">
-                            <h2>📄 Ma Fiche</h2>
+                            <h2 data-i18n="project.fiche.h2">📄 Ma Fiche</h2>
                             <div class="project-tags">
                                 <span>Fiche</span><span>PDF</span><span>Document</span>
                             </div>
                         </div>
-                        <div class="project-desc">Fiche PDF à consulter directement dans l'aperçu intégré.</div>
+                        <div class="project-desc" data-i18n="project.fiche.desc">Fiche PDF à consulter directement dans l'aperçu intégré.</div>
                         <div class="project-section">
-                            <h3><i class="fas fa-file-pdf"></i> Document</h3>
+                            <h3><i class="fas fa-file-pdf"></i> <span data-i18n="project.section.doc">Document</span></h3>
                             <div class="project-files">
                                 <a href="#" onclick="openPDF('image/fiche.pdf'); return false;">
-                                    <i class="fas fa-file-pdf"></i> Ouvrir la fiche PDF
+                                    <i class="fas fa-file-pdf"></i> <span data-i18n="project.fiche.file1">Ouvrir la fiche PDF</span>
                                 </a>
                             </div>
                         </div>
                         <div class="project-nav">
                             <button class="btn-back" onclick="showFolder('fiche')">
-                                <i class="fas fa-arrow-left"></i> Retour
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
                             </button>
                         </div>
                     </div>
@@ -888,15 +901,15 @@
     <div class="container contact-section">
         <div class="contact-inner">
             <div class="contact-left fade-up">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem;">Discutons de votre <br>infrastructure</h2>
-                <p>Pour toute prise de contact, utilisez le formulaire ou contactez-moi directement.</p>
+                <h2 style="font-size: 2rem; margin-bottom: 1rem;" data-i18n="contact.title">Discutons de votre <br>infrastructure</h2>
+                <p data-i18n="contact.desc">Pour toute prise de contact, utilisez le formulaire ou contactez-moi directement.</p>
                 <div class="contact-item"><i class="fas fa-envelope"></i> bramiacher@mail.com</div>
                 <div class="contact-item"><i class="fas fa-phone-alt"></i> 06 12 63 13 92</div>
                 <div class="contact-item">
-    <a href="https://github.com/Acherbeno" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1rem;">
-        <i class="fab fa-github"></i> github.com/Acherbeno
-    </a>
-</div>
+                    <a href="https://github.com/Acherbeno" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1rem;">
+                        <i class="fab fa-github"></i> github.com/Acherbeno
+                    </a>
+                </div>
                 <div class="contact-item"><i class="fab fa-linkedin"></i> linkedin.com/in/acher</div>
             </div>
             <div class="contact-right fade-up">
@@ -904,15 +917,15 @@
                     <input type="hidden" name="_captcha" value="true">
                     <input type="hidden" name="_next" value="https://formspree.io/thanks.html">
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="Votre nom *" required>
+                        <input type="text" name="name" data-i18n-placeholder="contact.form.name" placeholder="Votre nom *" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="Votre email *" required>
+                        <input type="email" name="email" data-i18n-placeholder="contact.form.email" placeholder="Votre email *" required>
                     </div>
                     <div class="form-group">
-                        <textarea rows="3" name="message" placeholder="Votre message (demande, collaboration...) *" required></textarea>
+                        <textarea rows="3" name="message" data-i18n-placeholder="contact.form.message" placeholder="Votre message (demande, collaboration...) *" required></textarea>
                     </div>
-                    <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer le message</button>
+                    <button type="submit"><i class="fas fa-paper-plane"></i> <span data-i18n="contact.form.send">Envoyer le message</span></button>
                 </form>
             </div>
         </div>
@@ -920,9 +933,10 @@
 </section>
 
 <footer class="wave-footer">
-    <p>© 2025 Acher - Portfolio SISR | Administrateur systèmes & réseaux en devenir <i class="fas fa-network-wired"></i></p>
+    <p data-i18n="footer.text">© 2026 Acher - Portfolio SISR | Administrateur systèmes & réseaux en devenir <i class="fas fa-network-wired"></i></p>
 </footer>
 
+<script src="translations.js"></script>
 <script src="index.js"></script>
 </body>
 </html>
