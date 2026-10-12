@@ -4,6 +4,7 @@ const translations = {
         "nav.home": "Accueil",
         "nav.about": "À propos",
         "nav.skills": "Compétences",
+        "nav.veille": "Veille",
         "nav.contact": "Contact",
         "hero.badge": "BTS SIO SISR",
         "hero.title2": "Administrateur",
@@ -43,6 +44,7 @@ const translations = {
         "folder.info.1": "1 élément",
         "folder.info.2": "2 éléments",
         "folder.info.3": "3 éléments",
+        "folder.info.4": "4 éléments",
         "folder.info.2sub": "2 sous-dossiers",
         "project.hsrp.title": "Routage inter-VLAN HSRP",
         "project.hsrp.info": "HSRP • VLAN • Routage",
@@ -76,6 +78,12 @@ const translations = {
         "project.backup.info": "Sauvegarde • Veeam",
         "project.rgpd.title": "Certification L'ATELIER RGPD",
         "project.rgpd.info": "RGPD • Cybersécurité",
+        "project.hplife.title": "Certification HP LIFE",
+        "project.hplife.info": "HP LIFE • Compétences",
+        "project.cisco.title": "Certification Cisco",
+        "project.cisco.info": "Cisco • Réseaux",
+        "project.ndg.title": "Certification NDG",
+        "project.ndg.info": "NDG • Linux",
         "project.fiche.title": "Ma Fiche",
         "project.fiche.info": "PDF • Document",
         "project.hsrp.h2": "📄 Routage inter-VLAN HSRP",
@@ -110,6 +118,12 @@ const translations = {
         "project.backup.desc": "Déploiement et configuration d'un serveur de sauvegarde avec Veeam Backup & Replication pour assurer la continuité d'activité.",
         "project.rgpd.h2": "📄 Certification L'ATELIER RGPD",
         "project.rgpd.desc": "Obtention de la certification L'ATELIER RGPD. Cette formation m'a permis d'acquérir les compétences nécessaires pour comprendre et appliquer le Règlement Général sur la Protection des Données (RGPD) au sein d'une organisation. J'ai appris à identifier les données personnelles, à mettre en place des mesures de sécurité adéquates, à gérer les consentements et à assurer la conformité des traitements de données.",
+        "project.hplife.h2": "📄 Certification HP LIFE",
+        "project.hplife.desc": "Obtention de la certification HP LIFE. Cette formation m'a permis d'acquérir des compétences professionnelles et techniques complémentaires dans le domaine du numérique et de l'entrepreneuriat.",
+        "project.cisco.h2": "📄 Certification Cisco",
+        "project.cisco.desc": "Obtention de la certification Cisco. Cette formation m'a permis d'acquérir des compétences solides en réseaux, configuration d'équipements Cisco et administration d'infrastructures réseau.",
+        "project.ndg.h2": "📄 Certification NDG",
+        "project.ndg.desc": "Obtention de la certification NDG. Cette formation m'a permis d'acquérir des compétences en administration Linux, gestion des systèmes et bonnes pratiques de sécurité.",
         "project.fiche.h2": "📄 Ma Fiche",
         "project.fiche.desc": "Fiche PDF à consulter directement dans l'aperçu intégré.",
         "project.section.proof": "Preuve / Capture d'écran",
@@ -143,6 +157,9 @@ const translations = {
         "project.backup.file1": "Configuration Veeam",
         "project.backup.file2": "Plan de reprise d'activité",
         "project.rgpd.file1": "Certificat L'ATELIER RGPD",
+        "project.hplife.file1": "Certificat HP LIFE",
+        "project.cisco.file1": "Certificat Cisco",
+        "project.ndg.file1": "Certificat NDG",
         "project.fiche.file1": "Ouvrir la fiche PDF",
         "contact.title": "Discutons de votre <br>infrastructure",
         "contact.desc": "Pour toute prise de contact, utilisez le formulaire ou contactez-moi directement.",
@@ -150,16 +167,37 @@ const translations = {
         "contact.form.email": "Votre email *",
         "contact.form.message": "Votre message (demande, collaboration...) *",
         "contact.form.send": "Envoyer le message",
-        "footer.text": "© 2025 Acher - Portfolio SISR | Administrateur systèmes & réseaux en devenir <i class=\"fas fa-network-wired\"></i>",
+        "footer.text": "© 2026 Acher - Portfolio SISR | Administrateur systèmes & réseaux en devenir <i class=\"fas fa-network-wired\"></i>",
         "tooltip.top": "Haut",
         "tooltip.bottom": "Bas",
         "pdf.error.title": "Document non disponible",
-        "pdf.error.desc": "Le fichier PDF n'a pas encore été ajouté. Vérifie que le fichier existe bien dans le dossier image/"
+        "pdf.error.desc": "Le fichier PDF n'a pas encore été ajouté. Vérifie que le fichier existe bien dans le dossier image/",
+        "veille.title": "Veille Technologique",
+        "veille.subtitle": "Chaque jour, une actualité informatique. Sélectionne une date dans le calendrier.",
+        "veille.loading": "Chargement de l'actualité...",
+        "veille.readMore": "Lire l'article",
+        "veille.retry": "Réessayer",
+        "veille.btn.today": "Aujourd'hui",
+        "veille.day.mon": "Lun",
+        "veille.day.tue": "Mar",
+        "veille.day.wed": "Mer",
+        "veille.day.thu": "Jeu",
+        "veille.day.fri": "Ven",
+        "veille.day.sat": "Sam",
+        "veille.day.sun": "Dim",
+        "veille.legend.today": "Aujourd'hui",
+        "veille.legend.news": "Actu dispo",
+        "veille.legend.selected": "Sélectionné",
+        "veille.empty.title": "Pas encore d'actu",
+        "veille.empty.desc": "Aucune actualité pour cette date. Reviens plus tard !",
+        "veille.error.title": "Oups, impossible de charger l'actu",
+        "veille.error.desc": "Vérifie ta connexion internet et réessaie."
     },
     en: {
         "nav.home": "Home",
         "nav.about": "About",
         "nav.skills": "Skills",
+        "nav.veille": "Tech Watch",
         "nav.contact": "Contact",
         "hero.badge": "BTS SIO SISR",
         "hero.title2": "Administrator",
@@ -199,6 +237,7 @@ const translations = {
         "folder.info.1": "1 item",
         "folder.info.2": "2 items",
         "folder.info.3": "3 items",
+        "folder.info.4": "4 items",
         "folder.info.2sub": "2 subfolders",
         "project.hsrp.title": "Inter-VLAN Routing HSRP",
         "project.hsrp.info": "HSRP • VLAN • Routing",
@@ -232,6 +271,12 @@ const translations = {
         "project.backup.info": "Backup • Veeam",
         "project.rgpd.title": "L'ATELIER RGPD Certification",
         "project.rgpd.info": "GDPR • Cybersecurity",
+        "project.hplife.title": "HP LIFE Certification",
+        "project.hplife.info": "HP LIFE • Skills",
+        "project.cisco.title": "Cisco Certification",
+        "project.cisco.info": "Cisco • Networks",
+        "project.ndg.title": "NDG Certification",
+        "project.ndg.info": "NDG • Linux",
         "project.fiche.title": "My Sheet",
         "project.fiche.info": "PDF • Document",
         "project.hsrp.h2": "📄 Inter-VLAN Routing HSRP",
@@ -266,6 +311,12 @@ const translations = {
         "project.backup.desc": "Deploying and configuring a backup server with Veeam Backup & Replication to ensure business continuity.",
         "project.rgpd.h2": "📄 L'ATELIER RGPD Certification",
         "project.rgpd.desc": "Obtaining the L'ATELIER RGPD certification. This training allowed me to acquire the skills needed to understand and apply the General Data Protection Regulation (GDPR) within an organization. I learned to identify personal data, implement adequate security measures, manage consents and ensure compliance of data processing.",
+        "project.hplife.h2": "📄 HP LIFE Certification",
+        "project.hplife.desc": "Obtained the HP LIFE certification. This training allowed me to acquire additional professional and technical skills in the digital and entrepreneurship fields.",
+        "project.cisco.h2": "📄 Cisco Certification",
+        "project.cisco.desc": "Obtained the Cisco certification. This training allowed me to acquire solid skills in networking, configuration of Cisco equipment and network infrastructure administration.",
+        "project.ndg.h2": "📄 NDG Certification",
+        "project.ndg.desc": "Obtained the NDG certification. This training allowed me to acquire skills in Linux administration, system management and security best practices.",
         "project.fiche.h2": "📄 My Sheet",
         "project.fiche.desc": "PDF sheet to view directly in the integrated preview.",
         "project.section.proof": "Proof / Screenshot",
@@ -299,6 +350,9 @@ const translations = {
         "project.backup.file1": "Veeam Configuration",
         "project.backup.file2": "Business Continuity Plan",
         "project.rgpd.file1": "L'ATELIER RGPD Certificate",
+        "project.hplife.file1": "HP LIFE Certificate",
+        "project.cisco.file1": "Cisco Certificate",
+        "project.ndg.file1": "NDG Certificate",
         "project.fiche.file1": "Open PDF Sheet",
         "contact.title": "Let's discuss your <br>infrastructure",
         "contact.desc": "To get in touch, use the form or contact me directly.",
@@ -306,11 +360,31 @@ const translations = {
         "contact.form.email": "Your email *",
         "contact.form.message": "Your message (request, collaboration...) *",
         "contact.form.send": "Send message",
-        "footer.text": "© 2025 Acher - SISR Portfolio | Future Systems & Network Administrator <i class=\"fas fa-network-wired\"></i>",
+        "footer.text": "© 2026 Acher - SISR Portfolio | Future Systems & Network Administrator <i class=\"fas fa-network-wired\"></i>",
         "tooltip.top": "Top",
         "tooltip.bottom": "Bottom",
         "pdf.error.title": "Document not available",
-        "pdf.error.desc": "The PDF file has not been added yet. Check that the file exists in the image/ folder."
+        "pdf.error.desc": "The PDF file has not been added yet. Check that the file exists in the image/ folder.",
+        "veille.title": "Tech Watch",
+        "veille.subtitle": "Every day, a tech news article. Pick a date in the calendar.",
+        "veille.loading": "Loading news...",
+        "veille.readMore": "Read article",
+        "veille.retry": "Retry",
+        "veille.btn.today": "Today",
+        "veille.day.mon": "Mon",
+        "veille.day.tue": "Tue",
+        "veille.day.wed": "Wed",
+        "veille.day.thu": "Thu",
+        "veille.day.fri": "Fri",
+        "veille.day.sat": "Sat",
+        "veille.day.sun": "Sun",
+        "veille.legend.today": "Today",
+        "veille.legend.news": "News available",
+        "veille.legend.selected": "Selected",
+        "veille.empty.title": "No news yet",
+        "veille.empty.desc": "No news for this date. Come back later!",
+        "veille.error.title": "Oops, couldn't load news",
+        "veille.error.desc": "Check your internet connection and try again."
     }
 };
 
@@ -347,14 +421,10 @@ function setLanguage(lang) {
     window.dispatchEvent(new Event('languageChanged'));
 }
 
-// ===== INIT LANGUE (avec protection anti-double) =====
 let langInitialized = false;
 
 function initLanguage() {
-    if (langInitialized) {
-        console.log('⚠️ initLanguage déjà appelée, on skip');
-        return;
-    }
+    if (langInitialized) return;
     langInitialized = true;
 
     setLanguage(currentLang);
@@ -362,32 +432,23 @@ function initLanguage() {
     const langBtn = document.getElementById('langBtn');
     const langMenu = document.getElementById('langMenu');
 
-    if (!langBtn || !langMenu) {
-        console.warn('⚠️ Sélecteur de langue introuvable');
-        return;
-    }
+    if (!langBtn || !langMenu) return;
 
-    // Toggle ouverture/fermeture
     langBtn.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        e.stopImmediatePropagation();
-        const isOpen = langMenu.classList.toggle('active');
-        console.log('🌐 Menu langue :', isOpen ? 'ouvert' : 'fermé');
+        langMenu.classList.toggle('active');
     });
 
-    // Choix de langue
     document.querySelectorAll('.lang-option').forEach(opt => {
         opt.addEventListener('click', function(e) {
             e.stopPropagation();
             const lang = this.getAttribute('data-lang');
-            console.log('🌐 Changement de langue vers :', lang);
             setLanguage(lang);
             langMenu.classList.remove('active');
         });
     });
 
-    // Fermer si clic ailleurs
     document.addEventListener('click', function(e) {
         if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
             langMenu.classList.remove('active');
@@ -395,7 +456,6 @@ function initLanguage() {
     });
 }
 
-// ===== LANCEMENT AUTO =====
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initLanguage);
 } else {

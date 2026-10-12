@@ -121,7 +121,6 @@ function typeEffect() {
 
 setTimeout(typeEffect, 1000);
 
-// Redémarrer le typing quand on change de langue
 window.addEventListener('languageChanged', () => {
     charIndex = 0;
     isDeleting = false;
@@ -358,7 +357,7 @@ function updateBreadcrumbFromView(viewId) {
         } else if (viewId.includes('stage2') || viewId.includes('migration') || viewId.includes('backup')) {
             path.push({ id: 'view-stage', name: names['view-stage'] });
             path.push({ id: 'view-stage2', name: names['view-stage2'] });
-        } else if (viewId.includes('rgpd')) {
+        } else if (viewId.includes('rgpd') || viewId.includes('hplife') || viewId.includes('cisco') || viewId.includes('ndg')) {
             path.push({ id: 'view-certifications', name: names['view-certifications'] });
         } else if (viewId.includes('fiche')) {
             path.push({ id: 'view-fiche', name: names['view-fiche'] });
@@ -480,13 +479,9 @@ window.addEventListener('load', () => {
     if (window.scrollY > 100) {
         scrollButtons.classList.add('visible');
     }
-    // Init langue
-    
 });
 
-// ============================================
 // ===== BARRE DE PROGRESSION =====
-// ============================================
 const progressBar = document.createElement('div');
 progressBar.id = 'scroll-progress-bar';
 progressBar.style.cssText = `
@@ -521,9 +516,7 @@ window.addEventListener('scroll', () => {
     progressBar.style.width = scrollPercent + '%';
 });
 
-// ============================================
 // ===== EFFET TILT 3D SUR CARTES =====
-// ============================================
 document.querySelectorAll('.tilt-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
@@ -541,9 +534,7 @@ document.querySelectorAll('.tilt-card').forEach(card => {
     });
 });
 
-// ============================================
 // ===== PARALLAX LÉGER SUR LE HERO =====
-// ============================================
 const heroSection = document.querySelector('.hero');
 if (heroSection) {
     window.addEventListener('scroll', () => {
@@ -557,9 +548,7 @@ if (heroSection) {
     });
 }
 
-// ============================================
 // ===== EFFET RIPPLE AU CLIC =====
-// ============================================
 document.querySelectorAll('.btn, .btn-cv, .btn-rapport, .btn-back, button[type="submit"]').forEach(btn => {
     btn.addEventListener('click', function(e) {
         const ripple = document.createElement('span');
@@ -600,9 +589,7 @@ rippleStyle.textContent = `
 `;
 document.head.appendChild(rippleStyle);
 
-// ============================================
 // ===== NAVBAR SCROLL EFFECT =====
-// ============================================
 const navbar = document.querySelector('.navbar');
 if (navbar) {
     window.addEventListener('scroll', () => {
@@ -616,9 +603,7 @@ if (navbar) {
     });
 }
 
-// ============================================
 // ===== TITRE QUI APPARAÎT =====
-// ============================================
 window.addEventListener('load', () => {
     const heroTitle = document.querySelector('.hero-text h1');
     if (heroTitle) {
@@ -631,3 +616,357 @@ window.addEventListener('load', () => {
         }, 300);
     }
 });
+
+// ============================================
+// ===== VEILLE TECHNOLOGIQUE =====
+// ============================================
+
+const RSS_SOURCES = [
+    { name: '01net', url: 'https://www.01net.com/feed/', color: '#e63946' },
+    { name: 'Le Monde Info', url: 'https://www.lemondeinformatique.fr/flux-rss/thematique/toutes-les-actualites/rss.xml', color: '#1d4ed8' },
+    { name: 'Korben', url: 'https://korben.info/feed', color: '#f59e0b' },
+    { name: 'Next', url: 'https://next.ink/feed/', color: '#8b5cf6' },
+    { name: 'ZDNet FR', url: 'https://www.zdnet.fr/feeds/rss/actualites/', color: '#06b6d4' },
+    { name: 'Clubic', url: 'https://www.clubic.com/feed/news.rss', color: '#ec4899' }
+];
+
+const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+
+const STORAGE_KEY = 'veille_archive_v1';
+const CAL_MONTHS_FR = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+const CAL_MONTHS_EN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+let calCurrentDate = new Date();
+let selectedDate = new Date();
+let veilleArchive = {};
+
+function dateKey(d) {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+}
+
+function todayKey() { return dateKey(new Date()); }
+
+function loadArchive() {
+    try {
+        veilleArchive = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    } catch (e) {
+        veilleArchive = {};
+    }
+}
+
+function saveArchive() {
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(veilleArchive));
+    } catch (e) {
+        console.warn('Archive veille : quota localStorage dépassé');
+    }
+}
+
+function renderCalendar() {
+    const grid = document.getElementById('calGrid');
+    const monthEl = document.getElementById('calMonth');
+    const yearEl = document.getElementById('calYear');
+    if (!grid) return;
+
+    const year = calCurrentDate.getFullYear();
+    const month = calCurrentDate.getMonth();
+    const months = (typeof currentLang !== 'undefined' && currentLang === 'en') ? CAL_MONTHS_EN : CAL_MONTHS_FR;
+
+    monthEl.textContent = months[month];
+    yearEl.textContent = year;
+
+    grid.innerHTML = '';
+
+    const firstDay = new Date(year, month, 1);
+    let startOffset = firstDay.getDay() - 1;
+    if (startOffset < 0) startOffset = 6;
+
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    for (let i = 0; i < startOffset; i++) {
+        const empty = document.createElement('div');
+        empty.className = 'cal-day empty';
+        grid.appendChild(empty);
+    }
+
+    for (let d = 1; d <= daysInMonth; d++) {
+        const dayDate = new Date(year, month, d);
+        dayDate.setHours(0, 0, 0, 0);
+        const key = dateKey(dayDate);
+
+        const cell = document.createElement('button');
+        cell.className = 'cal-day';
+        cell.textContent = d;
+        cell.dataset.date = key;
+
+        const isToday = dayDate.getTime() === today.getTime();
+        const isSelected = key === dateKey(selectedDate);
+        const hasNews = !!veilleArchive[key];
+
+        if (isToday) cell.classList.add('today');
+        if (isSelected) cell.classList.add('selected');
+        if (hasNews) cell.classList.add('has-news');
+
+        cell.addEventListener('click', () => {
+            selectedDate = dayDate;
+            renderCalendar();
+            loadNewsForSelectedDate();
+        });
+
+        grid.appendChild(cell);
+    }
+}
+
+async function loadNewsForSelectedDate(forceRefresh = false) {
+    const key = dateKey(selectedDate);
+    const today = todayKey();
+
+    updateNewsDateLabel();
+
+    if (key > today) {
+        showNewsEmpty('future');
+        return;
+    }
+
+    if (veilleArchive[key] && !forceRefresh) {
+        showNewsContent(veilleArchive[key]);
+        return;
+    }
+
+    showNewsLoader();
+
+    try {
+        const articles = await fetchAllArticles();
+        if (articles.length === 0) {
+            showNewsError();
+            return;
+        }
+
+        let match = findArticleForDate(articles, key);
+
+        if (!match && key === today) {
+            match = articles[0];
+        }
+
+        if (!match && key < today) {
+            const seed = key.split('-').reduce((a, b) => a + parseInt(b), 0);
+            match = articles[seed % articles.length];
+        }
+
+        if (match) {
+            veilleArchive[key] = match;
+            saveArchive();
+            renderCalendar();
+            showNewsContent(match);
+        } else {
+            showNewsEmpty('none');
+        }
+    } catch (err) {
+        console.error('Erreur veille:', err);
+        showNewsError();
+    }
+}
+
+function findArticleForDate(articles, key) {
+    return articles.find(a => {
+        if (!a.pubDate) return false;
+        const d = new Date(a.pubDate);
+        if (isNaN(d.getTime())) return false;
+        return dateKey(d) === key;
+    });
+}
+
+async function fetchAllArticles() {
+    const promises = RSS_SOURCES.map(src => fetchOneFeed(src));
+    const results = await Promise.allSettled(promises);
+
+    const all = [];
+    results.forEach(r => {
+        if (r.status === 'fulfilled' && Array.isArray(r.value)) {
+            all.push(...r.value);
+        }
+    });
+
+    all.sort((a, b) => new Date(b.pubDate || 0) - new Date(a.pubDate || 0));
+    return all;
+}
+
+async function fetchOneFeed(source) {
+    const url = CORS_PROXY + encodeURIComponent(source.url);
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const text = await res.text();
+    const xml = new DOMParser().parseFromString(text, 'application/xml');
+
+    const items = xml.querySelectorAll('item, entry');
+    const articles = [];
+
+    items.forEach(item => {
+        const title = item.querySelector('title')?.textContent?.trim();
+        const link = item.querySelector('link')?.textContent?.trim()
+                  || item.querySelector('link')?.getAttribute('href');
+        const descRaw = item.querySelector('description')?.textContent
+                     || item.querySelector('summary')?.textContent
+                     || item.querySelector('content')?.textContent
+                     || '';
+        const pubDate = item.querySelector('pubDate')?.textContent
+                     || item.querySelector('updated')?.textContent
+                     || item.querySelector('published')?.textContent
+                     || '';
+
+        if (!title || !link) return;
+
+        const tmp = document.createElement('div');
+        tmp.innerHTML = descRaw;
+        let desc = (tmp.textContent || '').trim();
+        if (desc.length > 280) desc = desc.slice(0, 280) + '…';
+
+        articles.push({
+            title,
+            desc,
+            link,
+            pubDate,
+            source: source.name,
+            color: source.color
+        });
+    });
+
+    return articles;
+}
+
+function updateNewsDateLabel() {
+    const label = document.getElementById('newsDateLabel');
+    if (!label) return;
+    const lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+    const opts = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+    label.textContent = selectedDate.toLocaleDateString(lang === 'en' ? 'en-US' : 'fr-FR', opts);
+}
+
+function hideAllNewsStates() {
+    ['newsLoader','newsContent','newsEmpty','newsError'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+    });
+}
+
+function showNewsLoader() {
+    hideAllNewsStates();
+    const el = document.getElementById('newsLoader');
+    if (el) el.style.display = 'flex';
+}
+
+function showNewsContent(article) {
+    hideAllNewsStates();
+    const content = document.getElementById('newsContent');
+    if (!content) return;
+
+    document.getElementById('newsSource').textContent = article.source || 'Source';
+    document.getElementById('newsSource').style.background = article.color || '';
+    document.getElementById('newsTitle').textContent = article.title || '—';
+    document.getElementById('newsDesc').textContent = article.desc || '';
+
+    const link = document.getElementById('newsLink');
+    link.href = article.link || '#';
+
+    const timeEl = document.getElementById('newsTime');
+    if (article.pubDate) {
+        const d = new Date(article.pubDate);
+        if (!isNaN(d.getTime())) {
+            const lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+            timeEl.innerHTML = `<i class="fas fa-clock"></i> ${d.toLocaleDateString(lang === 'en' ? 'en-US' : 'fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}`;
+        } else {
+            timeEl.innerHTML = '<i class="fas fa-clock"></i> —';
+        }
+    } else {
+        timeEl.innerHTML = '<i class="fas fa-clock"></i> —';
+    }
+
+    content.style.display = 'flex';
+}
+
+function showNewsEmpty(type) {
+    hideAllNewsStates();
+    const empty = document.getElementById('newsEmpty');
+    const title = document.getElementById('newsEmptyTitle');
+    const desc = document.getElementById('newsEmptyDesc');
+    if (!empty) return;
+
+    const lang = (typeof currentLang !== 'undefined') ? currentLang : 'fr';
+
+    if (type === 'future') {
+        title.textContent = lang === 'en' ? 'Not yet available' : 'Pas encore disponible';
+        desc.textContent = lang === 'en'
+            ? 'This date is in the future. Come back on that day to see the daily news!'
+            : 'Cette date est dans le futur. Reviens ce jour-là pour découvrir l\'actu du jour !';
+    } else {
+        title.textContent = lang === 'en' ? 'No news found' : 'Aucune actu trouvée';
+        desc.textContent = lang === 'en'
+            ? 'No article found for this date. Try another day or refresh.'
+            : 'Aucun article trouvé pour cette date. Essaie un autre jour ou rafraîchis.';
+    }
+
+    empty.style.display = 'flex';
+}
+
+function showNewsError() {
+    hideAllNewsStates();
+    const el = document.getElementById('newsError');
+    if (el) el.style.display = 'flex';
+}
+
+function initVeille() {
+    const calGrid = document.getElementById('calGrid');
+    if (!calGrid) return;
+
+    loadArchive();
+    renderCalendar();
+    updateNewsDateLabel();
+
+    document.getElementById('calPrev')?.addEventListener('click', () => {
+        calCurrentDate.setMonth(calCurrentDate.getMonth() - 1);
+        renderCalendar();
+    });
+    document.getElementById('calNext')?.addEventListener('click', () => {
+        calCurrentDate.setMonth(calCurrentDate.getMonth() + 1);
+        renderCalendar();
+    });
+
+    document.getElementById('calTodayBtn')?.addEventListener('click', () => {
+        const t = new Date();
+        calCurrentDate = new Date(t.getFullYear(), t.getMonth(), 1);
+        selectedDate = t;
+        renderCalendar();
+        loadNewsForSelectedDate();
+    });
+
+    document.getElementById('newsRefresh')?.addEventListener('click', () => {
+        loadNewsForSelectedDate(true);
+    });
+    document.getElementById('newsRetry')?.addEventListener('click', () => {
+        loadNewsForSelectedDate(true);
+    });
+
+    loadNewsForSelectedDate();
+}
+
+window.addEventListener('languageChanged', () => {
+    if (document.getElementById('calGrid')) {
+        renderCalendar();
+        updateNewsDateLabel();
+        const key = dateKey(selectedDate);
+        if (veilleArchive[key]) {
+            showNewsContent(veilleArchive[key]);
+        }
+    }
+});
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initVeille);
+} else {
+    initVeille();
+}

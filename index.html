@@ -48,6 +48,7 @@
             <li><a href="#accueil" data-i18n="nav.home">Accueil</a></li>
             <li><a href="#a-propos" data-i18n="nav.about">À propos</a></li>
             <li><a href="#competences" data-i18n="nav.skills">Compétences</a></li>
+            <li><a href="#veille" data-i18n="nav.veille">Veille</a></li>
             <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
 
             <!-- ===== SÉLECTEUR DE LANGUE ===== -->
@@ -206,7 +207,7 @@
                         <div class="folder-item" onclick="showFolder('certifications')">
                             <div class="folder-icon folder-cyan"><i class="fas fa-folder"></i></div>
                             <div class="folder-name" data-i18n="folder.certifs">📁 Certifications</div>
-                            <div class="folder-info" data-i18n="folder.info.1">1 élément</div>
+                            <div class="folder-info" data-i18n="folder.info.4">4 éléments</div>
                         </div>
                         <div class="folder-item" onclick="showFolder('fiche')">
                             <div class="folder-icon folder-pink"><i class="fas fa-folder"></i></div>
@@ -350,6 +351,21 @@
                             <img src="image/certif.png" alt="Certification RGPD" class="project-thumbnail">
                             <div class="folder-name" data-i18n="project.rgpd.title">Certification L'ATELIER RGPD</div>
                             <div class="folder-info" data-i18n="project.rgpd.info">RGPD • Cybersécurité</div>
+                        </div>
+                        <div class="folder-item project-item" onclick="showProject('projet-hplife')">
+                            <img src="image/hplife.png" alt="Certification HP LIFE" class="project-thumbnail">
+                            <div class="folder-name" data-i18n="project.hplife.title">Certification HP LIFE</div>
+                            <div class="folder-info" data-i18n="project.hplife.info">HP LIFE • Compétences</div>
+                        </div>
+                        <div class="folder-item project-item" onclick="showProject('projet-cisco')">
+                            <img src="image/cisco.png" alt="Certification Cisco" class="project-thumbnail">
+                            <div class="folder-name" data-i18n="project.cisco.title">Certification Cisco</div>
+                            <div class="folder-info" data-i18n="project.cisco.info">Cisco • Réseaux</div>
+                        </div>
+                        <div class="folder-item project-item" onclick="showProject('projet-ndg')">
+                            <img src="image/NDG.png" alt="Certification NDG" class="project-thumbnail">
+                            <div class="folder-name" data-i18n="project.ndg.title">Certification NDG</div>
+                            <div class="folder-info" data-i18n="project.ndg.info">NDG • Linux</div>
                         </div>
                     </div>
                 </div>
@@ -864,6 +880,96 @@
                     </div>
                 </div>
 
+                <!-- ===== PROJET : HP LIFE ===== -->
+                <div id="view-projet-hplife" class="view-section">
+                    <div class="project-detail">
+                        <div class="project-header">
+                            <h2 data-i18n="project.hplife.h2">📄 Certification HP LIFE</h2>
+                            <div class="project-tags">
+                                <span>HP LIFE</span><span>Compétences</span><span>Certification</span>
+                            </div>
+                        </div>
+                        <div class="project-desc" data-i18n="project.hplife.desc">Obtention de la certification HP LIFE. Cette formation m'a permis d'acquérir des compétences professionnelles et techniques complémentaires dans le domaine du numérique et de l'entrepreneuriat.</div>
+                        <div class="project-section">
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof2">Preuve / Certificat</span></h3>
+                            <div class="project-images">
+                                <img src="image/hplife.png" alt="Certification HP LIFE" onclick="window.open('image/hplife.png', '_blank')">
+                            </div>
+                        </div>
+                        <div class="project-section">
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
+                            <div class="project-files">
+                                <a href="#" onclick="openPDF('image/hplife.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.hplife.file1">Certificat HP LIFE</span></a>
+                            </div>
+                        </div>
+                        <div class="project-nav">
+                            <button class="btn-back" onclick="showFolder('certifications')">
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== PROJET : CISCO ===== -->
+                <div id="view-projet-cisco" class="view-section">
+                    <div class="project-detail">
+                        <div class="project-header">
+                            <h2 data-i18n="project.cisco.h2">📄 Certification Cisco</h2>
+                            <div class="project-tags">
+                                <span>Cisco</span><span>Réseaux</span><span>Certification</span>
+                            </div>
+                        </div>
+                        <div class="project-desc" data-i18n="project.cisco.desc">Obtention de la certification Cisco. Cette formation m'a permis d'acquérir des compétences solides en réseaux, configuration d'équipements Cisco et administration d'infrastructures réseau.</div>
+                        <div class="project-section">
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof2">Preuve / Certificat</span></h3>
+                            <div class="project-images">
+                                <img src="image/cisco.png" alt="Certification Cisco" onclick="window.open('image/cisco.png', '_blank')">
+                            </div>
+                        </div>
+                        <div class="project-section">
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
+                            <div class="project-files">
+                                <a href="#" onclick="openPDF('image/cisco.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.cisco.file1">Certificat Cisco</span></a>
+                            </div>
+                        </div>
+                        <div class="project-nav">
+                            <button class="btn-back" onclick="showFolder('certifications')">
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== PROJET : NDG ===== -->
+                <div id="view-projet-ndg" class="view-section">
+                    <div class="project-detail">
+                        <div class="project-header">
+                            <h2 data-i18n="project.ndg.h2">📄 Certification NDG</h2>
+                            <div class="project-tags">
+                                <span>NDG</span><span>Linux</span><span>Certification</span>
+                            </div>
+                        </div>
+                        <div class="project-desc" data-i18n="project.ndg.desc">Obtention de la certification NDG. Cette formation m'a permis d'acquérir des compétences en administration Linux, gestion des systèmes et bonnes pratiques de sécurité.</div>
+                        <div class="project-section">
+                            <h3><i class="fas fa-image"></i> <span data-i18n="project.section.proof2">Preuve / Certificat</span></h3>
+                            <div class="project-images">
+                                <img src="image/NDG.png" alt="Certification NDG" onclick="window.open('image/NDG.png', '_blank')">
+                            </div>
+                        </div>
+                        <div class="project-section">
+                            <h3><i class="fas fa-file-download"></i> <span data-i18n="project.section.docs">Documents & fichiers</span></h3>
+                            <div class="project-files">
+                                <a href="#" onclick="openPDF('image/NDG.pdf'); return false;"><i class="fas fa-file-pdf"></i> <span data-i18n="project.ndg.file1">Certificat NDG</span></a>
+                            </div>
+                        </div>
+                        <div class="project-nav">
+                            <button class="btn-back" onclick="showFolder('certifications')">
+                                <i class="fas fa-arrow-left"></i> <span data-i18n="skills.btn.back">Retour</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- ===== PROJET : FICHE ===== -->
                 <div id="view-projet-fiche" class="view-section">
                     <div class="project-detail">
@@ -892,6 +998,111 @@
 
             </div>
             <!-- ===== FIN CONTENU ===== -->
+        </div>
+    </div>
+</section>
+
+<!-- ===== VEILLE TECHNOLOGIQUE ===== -->
+<section id="veille">
+    <div class="container">
+        <h2 class="section-title fade-up">
+            <i class="fas fa-satellite-dish"></i>
+            <span data-i18n="veille.title">Veille Technologique</span>
+        </h2>
+        <p class="veille-subtitle fade-up" data-i18n="veille.subtitle">
+            Chaque jour, une actualité informatique. Sélectionne une date dans le calendrier.
+        </p>
+
+        <div class="veille-wrapper fade-up">
+            <!-- ===== CALENDRIER ===== -->
+            <div class="calendar-card tilt-card">
+                <div class="calendar-header">
+                    <button class="cal-nav-btn" id="calPrev" title="Mois précédent">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="cal-month-year">
+                        <span id="calMonth">--</span>
+                        <span id="calYear">----</span>
+                    </div>
+                    <button class="cal-nav-btn" id="calNext" title="Mois suivant">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="calendar-weekdays">
+                    <span data-i18n="veille.day.mon">Lun</span>
+                    <span data-i18n="veille.day.tue">Mar</span>
+                    <span data-i18n="veille.day.wed">Mer</span>
+                    <span data-i18n="veille.day.thu">Jeu</span>
+                    <span data-i18n="veille.day.fri">Ven</span>
+                    <span data-i18n="veille.day.sat">Sam</span>
+                    <span data-i18n="veille.day.sun">Dim</span>
+                </div>
+
+                <div class="calendar-grid" id="calGrid"></div>
+
+                <div class="calendar-legend">
+                    <span><span class="dot dot-today"></span> <span data-i18n="veille.legend.today">Aujourd'hui</span></span>
+                    <span><span class="dot dot-has-news"></span> <span data-i18n="veille.legend.news">Actu dispo</span></span>
+                    <span><span class="dot dot-selected"></span> <span data-i18n="veille.legend.selected">Sélectionné</span></span>
+                </div>
+
+                <button class="btn btn-outline btn-today" id="calTodayBtn">
+                    <i class="fas fa-calendar-day"></i>
+                    <span data-i18n="veille.btn.today">Aujourd'hui</span>
+                </button>
+            </div>
+
+            <!-- ===== PANNEAU ACTU ===== -->
+            <div class="news-card tilt-card">
+                <div class="news-header">
+                    <div class="news-date">
+                        <i class="fas fa-newspaper"></i>
+                        <span id="newsDateLabel">--</span>
+                    </div>
+                    <button class="btn-refresh" id="newsRefresh" title="Rafraîchir">
+                        <i class="fas fa-rotate"></i>
+                    </button>
+                </div>
+
+                <!-- Loader -->
+                <div class="news-loader" id="newsLoader">
+                    <div class="loader-spinner"></div>
+                    <p data-i18n="veille.loading">Chargement de l'actualité...</p>
+                </div>
+
+                <!-- Contenu -->
+                <div class="news-content" id="newsContent" style="display:none;">
+                    <div class="news-source-badge" id="newsSource">--</div>
+                    <h3 class="news-title" id="newsTitle">--</h3>
+                    <p class="news-desc" id="newsDesc">--</p>
+                    <div class="news-footer">
+                        <span class="news-time" id="newsTime"><i class="fas fa-clock"></i> --</span>
+                        <a href="#" target="_blank" rel="noopener" class="news-link" id="newsLink">
+                            <span data-i18n="veille.readMore">Lire l'article</span>
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Vide (futur ou rien) -->
+                <div class="news-empty" id="newsEmpty" style="display:none;">
+                    <i class="fas fa-hourglass-half"></i>
+                    <h3 id="newsEmptyTitle" data-i18n="veille.empty.title">Pas encore d'actu</h3>
+                    <p id="newsEmptyDesc" data-i18n="veille.empty.desc">Aucune actualité pour cette date. Reviens plus tard !</p>
+                </div>
+
+                <!-- Erreur -->
+                <div class="news-error" id="newsError" style="display:none;">
+                    <i class="fas fa-triangle-exclamation"></i>
+                    <h3 data-i18n="veille.error.title">Oups, impossible de charger l'actu</h3>
+                    <p data-i18n="veille.error.desc">Vérifie ta connexion internet et réessaie.</p>
+                    <button class="btn btn-primary" id="newsRetry">
+                        <i class="fas fa-rotate"></i>
+                        <span data-i18n="veille.retry">Réessayer</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </section>
